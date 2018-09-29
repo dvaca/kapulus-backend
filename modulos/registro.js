@@ -721,6 +721,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
   //#endregion
 
   //#region Impresion
+  /*
   //IMPRESION USANDO SERVICIO DE DYMO
   app.post('/imprimir/:idevento/:identificacion', (req, res, next) => {
     var listaAtributos;
@@ -848,7 +849,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
       res.send(xmlToJson(printersResponseText));
     });
   });
-  
+  */
   //TODAS LAS IMPRESORAS CON SU IP
   app.get('/impresoras/:idevento/', (req, res, next) => {
     var listaImpresoras;

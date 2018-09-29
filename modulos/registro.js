@@ -7,6 +7,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const Dymo = require('dymojs');//,
+const PORT = process.env.PORT || 4000;
        //dymo = new Dymo();
 
 var corsOptions = {
@@ -33,8 +34,8 @@ var labelXml;
     next();
   });
  
-app.listen(4000, function () {
-    console.log('Server is running.. on Port 4000');
+app.listen(PORT, function () {
+    console.log('Server is running.. on Port ' + PORT);
 });
 
   //PING

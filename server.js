@@ -1,0 +1,1 @@
+var registro = require('./modulos/registro');

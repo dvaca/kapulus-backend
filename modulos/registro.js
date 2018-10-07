@@ -14,10 +14,10 @@ var corsOptions = {
   //origin: 'http://localhost:4200',
   //origin: 'http://169.254.168.35:4200', //PEER TO PEER
   //origin: 'http://192.168.0.100:4200', // CAPULUS
-  origin: 'http://192.168.0.6:4200', // LOCAL
+  //origin: 'http://192.168.0.6:4200', // LOCAL
   //origin: 'http://192.168.0.102:4200', // ADRIAN
   //origin: 'https://192.168.0.4:4200', // LOCAL SSL
-  //origin: 'http://172.20.10.6:4200', // INTERNET
+  origin: 'https://kapulus.herokuapp.com', // INTERNET
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
 };
 

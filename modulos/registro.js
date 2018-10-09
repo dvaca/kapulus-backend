@@ -741,6 +741,43 @@ app.get('/asistente/:idevento', (req, res, next) => {
   });
   //#endregion
 
+  //ENVIO CORREO ELECTRONICO MEDIANTE GMAIL
+  app.get('/correo/:idevento/', (req, res, next) => {
+    try{
+    log('Start', 'CORREO ELECTRONICO', req.params.idevento);
+    var send = require('gmail-send')({
+        user: 'david1986@gmail.com',
+        pass: 'loveSong28',
+        //to:   'contacto@kapulusinternational.com',
+        to:   'david1986@gmail.com',
+        subject: 'Una buena noticia',
+        text:    'Si estas recibiendo este correo es porque ya funciono el envío de correos'         // Plain text
+        //html:    '<b>html text</b>'            // HTML
+      });
+      send( {}, 
+        function (err, res) 
+        {
+          if(err)
+          {
+            console.log('Error occured');
+            console.log(err.message);
+            return;
+          }
+          else
+          {
+            console.log(res);
+            console.log('Message sent successfully!');
+          }
+        });
+      
+      log('End', 'CORREO ELECTRONICO', req.params.idevento);
+      res.send("Terminado");
+    }catch(error){
+      console.log(error);
+    }
+  });
+  
+
 function arbolAsistentes(listaPadre, listaHijos) {
   try{
     var nodoPadre, nodoHijo, roots = [], i, j;

@@ -342,7 +342,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     });
   });
 
-  //TODOS LOS CAMPOS DE UN EVENTO, CON POSIBLES VALORES
+  //TODOS LOS CAMPOS PARA REGISTRO EN SITIO DE UN EVENTO, CON POSIBLES VALORES
   app.get('/camposevento/:idevento/', (req, res, next) => {
     var listaCampos, listaPosiblesValores;
     log('Start', 'CAMPOS EVENTO', req.params.idevento);
@@ -369,6 +369,38 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
         listaPosiblesValores = result.rows;
         log('End', 'CAMPOS EVENTO', req.params.idevento);
+        res.send(arbolCampos(listaCampos,listaPosiblesValores));
+      });
+    });
+  });
+
+  //TODOS LOS CAMPOS PARA REGISTRO WEB DE UN EVENTO, CON POSIBLES VALORES
+  app.get('/camposeventoweb/:idevento/', (req, res, next) => {
+    var listaCampos, listaPosiblesValores;
+    log('Start', 'CAMPOS EVENTO WEB', req.params.idevento);
+    db.query(`select *
+              from camposevento 
+              where idevento = $1 
+              and ordenregistroweb is not null
+              order by ordenregistroweb`, 
+              [req.params.idevento], (err, result) => { 
+      if (err) {
+        return next(err);
+      }
+      listaCampos = result.rows;
+      db.query(`select pv.*
+              from camposevento c
+              inner join posiblesvalores pv
+              on c.id = pv.idcampo
+              where c.idevento = $1 
+              and c.ordenregistroweb is not null
+              order by c.ordenregistroweb`, 
+              [req.params.idevento], (err, result) => {
+        if (err) {
+          return next(err);
+        }
+        listaPosiblesValores = result.rows;
+        log('End', 'CAMPOS EVENTO WEB', req.params.idevento);
         res.send(arbolCampos(listaCampos,listaPosiblesValores));
       });
     });

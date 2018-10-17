@@ -834,10 +834,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
     
     var TRANSPORT = {
       service: 'Gmail', auth: { 
-        //user: 'eventos@cclgbt.co',
-	  user: 'contacto@kapulusinternational.com',
-        //pass: 'CAMARA1234' }
-	pass: 'kamiad2018' }
+        user: 'eventos@cclgbt.co',
+	  //user: 'contacto@kapulusinternational.com',
+        pass: 'CAMARA1234' }
+	//pass: 'kamiad2018' }
     };
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );
@@ -863,8 +863,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
     
 
     let mailOptions = {
-      //from: 'eventos@cclgbt.co',
-      from: 'contacto@kapulusinternational.com',
+      from: 'eventos@cclgbt.co',
+      //from: 'contacto@kapulusinternational.com',
       to:   req.body.email,
       //to:   'contacto@kapulusinternational.com',
       subject: 'Correo de confirmación WeTrade',

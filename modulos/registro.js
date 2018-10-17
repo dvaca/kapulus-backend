@@ -834,8 +834,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
     
     var TRANSPORT = {
       service: 'Gmail', auth: { 
-        user: 'david1986@gmail.com',
-        pass: 'loveSong28' }
+        user: 'eventos@cclgbt.co',
+        pass: 'CAMARA1234' }
     };
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );

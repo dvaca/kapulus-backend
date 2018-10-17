@@ -861,7 +861,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     
 
     let mailOptions = {
-      from: 'david1986@gmail.com',
+      from: 'eventos@cclgbt.co',
       to:   req.body.email,
       //to:   'contacto@kapulusinternational.com',
       subject: 'Correo de confirmación WeTrade',

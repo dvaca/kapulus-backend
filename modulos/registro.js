@@ -737,7 +737,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     ON aa.idasistente = a.id
     WHERE idcampo = $2
     AND a.idevento = $1
-    AND a.registrado = true
+    /*AND a.registrado = true      Comentado para evento wetrade */
     GROUP BY valor
     ORDER BY count(1) DESC`;    
     

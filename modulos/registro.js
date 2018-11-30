@@ -835,9 +835,11 @@ app.get('/asistente/:idevento', (req, res, next) => {
     var TRANSPORT = {
       service: 'Gmail', auth: { 
       //user: 'eventos@cclgbt.co',
-	  user: 'contacto@kapulusinternational.com',
+	  //user: 'contacto@kapulusinternational.com',
+	  user: 'fiestafeoracle@feoracle.com.co',
       //  pass: 'CAMARA1234' }
-	  pass: 'kamiad2018' }
+	  //pass: 'kamiad2018' }
+	  pass: 'Felipe1234' }
     };
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );
@@ -865,11 +867,12 @@ app.get('/asistente/:idevento', (req, res, next) => {
     let mailOptions = {
       //from: 'eventos@cclgbt.co',
       //from: 'contacto@kapulusinternational.com',
-	  from: 'mercadeoempresarial2@ecci.edu.co',
+	  //from: 'mercadeoempresarial2@ecci.edu.co',
+	  from: 'fiestafeoracle@feoracle.com.co',
       to:   req.body.email,
       //to:   'contacto@kapulusinternational.com',
       //subject: 'Correo de confirmación WeTrade',
-	  subject: 'Confirmación Inauguración ECCI',
+	  subject: 'Confirmación Fiesta Cierre 2018',
       //text: 'Hello world?', // plain text body
       //html:    req.body.html,// HTML
       html:    html,// HTML
@@ -880,12 +883,12 @@ app.get('/asistente/:idevento', (req, res, next) => {
         //  cid: "logokapulus"
         //},
 		{
-          path:"./resources/LogoEcci.png",  
-          filename:"LogoEcci.png",  
-          cid: "logoecci"
+          path:"./resources/LogoOracle.png",  
+          filename:"LogoOracle.png",  
+          cid: "logooracle"
         },
         {
-          path:"./resources/FondoEcci.png",  
+          path:"./resources/InvitacionOracle.jpg",  
           filename:"Invitación.png",  
           cid: "fondoecci"
         },

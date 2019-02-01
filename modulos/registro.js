@@ -884,10 +884,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         //  filename:"Cover-page-FB-WETRADE.png",  
         //  cid: "logokapulus"
         //},
+		//{
+        //  path:"./resources/LogoOracle.png",  
+        //  filename:"LogoOracle.png",  
+        //  cid: "logooracle"
+        //},
 		{
-          path:"./resources/LogoOracle.png",  
-          filename:"LogoOracle.png",  
-          cid: "logooracle"
+          path:"./resources/LogoLegis.jpg",  
+          filename:"LogoLegis.jpg",  
+          cid: "logolegis"
         },
         //{
         //  path:"./resources/InvitacionOracle.jpg",  

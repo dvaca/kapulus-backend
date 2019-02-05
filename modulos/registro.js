@@ -846,7 +846,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
         //  pass: 'CAMARA1234' }
         //pass: 'kamiad2018' }
         //pass: 'Felipe1234' }
-        pass: ' juampis2007+' }
+        pass: 'juampis2007+' }
     };
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );

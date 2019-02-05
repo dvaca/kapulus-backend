@@ -834,7 +834,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
     
     var TRANSPORT = {
       //service: 'Gmail', 
-      host: 'smtp.office365.com', 
+      //host: 'smtp.office365.com', 
+      host: 'mail.legis.com.co',
       port: 587,
       secure: false,
       tls: {ciphers: 'SSLv3'},

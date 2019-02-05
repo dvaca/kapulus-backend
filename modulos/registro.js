@@ -837,17 +837,16 @@ app.get('/asistente/:idevento', (req, res, next) => {
       host: 'smtp.office365.com', 
       port: 587,
       secure: false,
-      tls: {ciphers: 'SSLv3'}
-      //,
-      //auth: { 
+      tls: {ciphers: 'SSLv3'},
+      auth: { 
       //user: 'eventos@cclgbt.co',
       //user: 'contacto@kapulusinternational.com',
       //user: 'fiestafeoracle@feoracle.com.co',
-      //user: 'Johana.Pedreros@legis.com.co',
+      user: 'Johana.Pedreros@legis.com.co',
         //  pass: 'CAMARA1234' }
         //pass: 'kamiad2018' }
         //pass: 'Felipe1234' }
-        //pass: 'BTLJOHANNA2019+' }
+        pass: ' juampis2007+' }
     };
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );

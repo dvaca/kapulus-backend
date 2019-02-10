@@ -862,14 +862,18 @@ app.get('/asistente/:idevento', (req, res, next) => {
     //fin = borrar.indexOf("</qr-code>");
     //console.log(inicio);
     //console.log(fin);
-    var imagenQR = req.body.html.substring(inicio, fin - 2);
-    var html = req.body.html.replace(req.body.html.substring(inicio, fin + 10), "");
-    //var imagenQR = borrar.substring(inicio, fin -2);
-    //console.log(imagenQR);
-    inicio = imagenQR.indexOf("base64,");
-    //console.log(inicio);
-    imagenQR = imagenQR.substring(inicio + 7, imagenQR.length);
-    //console.log(imagenQR);
+    var imagenQR = "";
+    var html = req.body.html;
+    if(inicio >= 0 && fin >= 0){
+      imagenQR = req.body.html.substring(inicio, fin - 2);
+      html = req.body.html.replace(req.body.html.substring(inicio, fin + 10), "");
+      //var imagenQR = borrar.substring(inicio, fin -2);
+      //console.log(imagenQR);
+      inicio = imagenQR.indexOf("base64,");
+      //console.log(inicio);
+      imagenQR = imagenQR.substring(inicio + 7, imagenQR.length);
+      //console.log(imagenQR);
+    }
     
 
     let mailOptions = {

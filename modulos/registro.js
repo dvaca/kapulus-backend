@@ -833,21 +833,21 @@ app.get('/asistente/:idevento', (req, res, next) => {
     log('Start', 'CORREO ELECTRONICO', req.params.idevento);
     
     var TRANSPORT = {
-      //service: 'Gmail', 
+      service: 'Gmail', 
       //host: 'smtp.office365.com', 
-      host: 'autodiscover.legis.com.co',
-      port: 587,
-      secure: false,
-      tls: {ciphers: 'SSLv3'},
+      //host: 'autodiscover.legis.com.co',
+      //port: 587,
+      //secure: false,
+      //tls: {ciphers: 'SSLv3'},
       auth: { 
       //user: 'eventos@cclgbt.co',
-      //user: 'contacto@kapulusinternational.com',
+      user: 'contacto@kapulusinternational.com',
       //user: 'fiestafeoracle@feoracle.com.co',
-      user: 'Johana.Pedreros@legis.com.co',
+      //user: 'Johana.Pedreros@legis.com.co',
         //  pass: 'CAMARA1234' }
-        //pass: 'kamiad2018' }
+        pass: 'kamiad2018' }
         //pass: 'Felipe1234' }
-        pass: 'JUAMPIS2007+' }
+        //pass: 'JUAMPIS2007+' }
     };
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );
@@ -878,10 +878,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 
     let mailOptions = {
       //from: 'eventos@cclgbt.co',
-      //from: 'contacto@kapulusinternational.com',
+      from: 'contacto@kapulusinternational.com',
 	    //from: 'mercadeoempresarial2@ecci.edu.co',
       //from: 'fiestafeoracle@feoracle.com.co',
-      from: 'Johana.Pedreros@legis.com.co',
+      //from: 'Johana.Pedreros@legis.com.co',
       to:   req.body.email,
       //to:   'contacto@kapulusinternational.com',
       //subject: 'Correo de confirmación WeTrade',

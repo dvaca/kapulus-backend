@@ -841,13 +841,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
       //tls: {ciphers: 'SSLv3'},
       auth: { 
       //user: 'eventos@cclgbt.co',
-      user: 'contacto@kapulusinternational.com',
+      //user: 'contacto@kapulusinternational.com',
       //user: 'fiestafeoracle@feoracle.com.co',
       //user: 'Johana.Pedreros@legis.com.co',
+	  user: 'eventoslegis@kapulusinternational.com',
         //  pass: 'CAMARA1234' }
-        pass: 'kamiad2018' }
+        //pass: 'kamiad2018' }
         //pass: 'Felipe1234' }
         //pass: 'JUAMPIS2007+' }
+		pass: 'KapuLegis18' }
     };
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );
@@ -878,10 +880,11 @@ app.get('/asistente/:idevento', (req, res, next) => {
 
     let mailOptions = {
       //from: 'eventos@cclgbt.co',
-      from: 'contacto@kapulusinternational.com',
+      //from: 'contacto@kapulusinternational.com',
 	    //from: 'mercadeoempresarial2@ecci.edu.co',
       //from: 'fiestafeoracle@feoracle.com.co',
       //from: 'Johana.Pedreros@legis.com.co',
+	  from: 'eventoslegis@kapulusinternational.com',
       to:   req.body.email,
       //to:   'contacto@kapulusinternational.com',
       //subject: 'Correo de confirmación WeTrade',

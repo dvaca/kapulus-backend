@@ -115,7 +115,11 @@ app.listen(PORT, function () {
         }
         listaAtributos = result.rows;
         log('End', 'ASISTENTES CONTROL ACCESO', req.params.identificacion);
-        res.send(arbolAsistentes(listaAsistentes, listaAtributos)[0]);
+        if(listaAsistentes.length == 0){
+          res.send("{}");
+        }else{
+          res.send(arbolAsistentes(listaAsistentes, listaAtributos)[0]);
+        }
       });
     });
   });

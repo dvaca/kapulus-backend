@@ -123,6 +123,46 @@ app.listen(PORT, function () {
       });
     });
   });
+  
+  //UN SOLO ASISTENTE PARA REGISTRO ONLINE, TODOS LOS ATRIBUTOS DE REGISTROWEB
+  app.get('/asistente/:idevento/online/:identificacion', (req, res, next) => {
+    var listaAsistentes, listaAtributos;
+    log('Start', 'ASISTENTE ONLINE', req.params.identificacion);
+    db.query('SELECT * FROM asistente WHERE idevento = $1 and identificacion = $2', 
+    [req.params.idevento, req.params.identificacion], (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      listaAsistentes = result.rows;
+      db.query(`select a.id as idasistente, 
+                c.id as idcampo,
+                aa.idvalorseleccionado,
+                aa.valor,
+                c.nombre  
+              from asistente a 
+              inner join camposevento c
+			          on a.idevento = c.idevento
+              left join atributosasistente aa
+                on a.id = aa.idasistente
+                and aa.idcampo = c.id
+              where a.idevento = $1
+                and a.identificacion = $2
+                and c.ordenregistroweb is not null
+              order by c.ordenregistroweb`, 
+              [req.params.idevento, req.params.identificacion], (err, result) => {
+        if (err) {
+          return next(err);
+        }
+        listaAtributos = result.rows;
+        log('End', 'ASISTENTE ONLINE', req.params.identificacion);
+        if(listaAsistentes.length == 0){
+          res.send("{}");
+        }else{
+          res.send(arbolAsistentes(listaAsistentes, listaAtributos)[0]);
+        }        
+      });
+    });
+  });
 
   //RETORNA UN ATRIBUTO DE UN ASISTENTE
   app.get('/asistente/:idevento/:identificacion/atributo/:atributo', (req, res, next) => {

@@ -921,42 +921,32 @@ app.get('/asistente/:idevento', (req, res, next) => {
       //console.log(imagenQR);
     }
     
-
-    let mailOptions = {
-      //from: 'eventos@cclgbt.co',
-      //from: 'contacto@kapulusinternational.com',
-	    //from: 'mercadeoempresarial2@ecci.edu.co',
-      //from: 'fiestafeoracle@feoracle.com.co',
-      //from: 'Johana.Pedreros@legis.com.co',
-	  from: 'eventoslegis@kapulusinternational.com',
-      to:   req.body.email,
-      //to:   'contacto@kapulusinternational.com',
-      //subject: 'Correo de confirmación WeTrade',
-	    subject: 'Invitación Congreso de Actualización en Propiedad Horizontal',
-      //text: 'Hello world?', // plain text body
-      //html:    req.body.html,// HTML
-      html:    html,// HTML
-      attachments:[
-        //{
-        //  path:"./resources/Cover-page-FB-WETRADE.png",  
-        //  filename:"Cover-page-FB-WETRADE.png",  
-        //  cid: "logokapulus"
-        //},
-		//{
-        //  path:"./resources/LogoOracle.png",  
-        //  filename:"LogoOracle.png",  
-        //  cid: "logooracle"
-        //},
+	let adjuntos;
+	if(req.params.idevento == 6){
+		adjuntos = [
 		{
           path:"./resources/LogoLegis.jpg",  
           filename:"LogoLegis.jpg",  
           cid: "logolegis"
         },
-        //{
-        //  path:"./resources/InvitacionOracle.jpg",  
-        //  filename:"Invitación.png",  
-        //  cid: "fondoecci"
-        //},
+        {
+          path:"./resources/invitacionCerveza.png",  
+          filename:"InvitaciónCerveza.png",  
+          cid: "invitacioncerveza"
+        },
+        {
+          path:"./resources/invitacionFlores.png",  
+          filename:"InvitaciónFlores.png",  
+          cid: "invitacionflores"
+        }
+		];
+	}else{
+		adjuntos = [
+		{
+          path:"./resources/LogoLegis.jpg",  
+          filename:"LogoLegis.jpg",  
+          cid: "logolegis"
+        },
 		{
           path:"./resources/Congreso Propiedad Horizontal-01.jpg",  
           filename:"Congreso Propiedad Horizontal-01.jpg",  
@@ -973,7 +963,24 @@ app.get('/asistente/:idevento', (req, res, next) => {
           cid: "pruebaqr",
           encoding: 'base64'
         }
-      ]
+		];
+	}
+	
+    let mailOptions = {
+      //from: 'eventos@cclgbt.co',
+      //from: 'contacto@kapulusinternational.com',
+	    //from: 'mercadeoempresarial2@ecci.edu.co',
+      //from: 'fiestafeoracle@feoracle.com.co',
+      //from: 'Johana.Pedreros@legis.com.co',
+	  from: 'eventoslegis@kapulusinternational.com',
+      to:   req.body.email,
+      //to:   'contacto@kapulusinternational.com',
+      //subject: 'Correo de confirmación WeTrade',
+	    subject: 'Invitación Congreso de Actualización en Propiedad Horizontal',
+      //text: 'Hello world?', // plain text body
+      //html:    req.body.html,// HTML
+      html:    html,// HTML
+      attachments: adjuntos
     };
 
     smtpTransport.sendMail(mailOptions, (error, info) => {

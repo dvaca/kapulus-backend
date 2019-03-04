@@ -976,7 +976,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
       to:   req.body.email,
       //to:   'contacto@kapulusinternational.com',
       //subject: 'Correo de confirmación WeTrade',
-	    subject: 'Invitación Congreso de Actualización en Propiedad Horizontal',
+	    //subject: 'Invitación Congreso de Actualización en Propiedad Horizontal',
+	    subject: req.body.subject,
       //text: 'Hello world?', // plain text body
       //html:    req.body.html,// HTML
       html:    html,// HTML

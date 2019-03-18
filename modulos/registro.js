@@ -898,29 +898,59 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
 		];
 	}else{
-		adjuntos = [
-		{
-          path:"./resources/LogoLegis.jpg",  
-          filename:"LogoLegis.jpg",  
-          cid: "logolegis"
-        },
-		{
-          path:"./resources/Congreso Propiedad Horizontal-01.jpg",  
-          filename:"Congreso Propiedad Horizontal-01.jpg",  
-          cid: "congreso1"
-        },
-		{
-          path:"./resources/Congreso Propiedad Horizontal-02.jpg",  
-          filename:"Congreso Propiedad Horizontal-02.jpg",  
-          cid: "congreso2"
-        },
-        {
-          filename: "QR.png",
-          content: imagenQR,
-          cid: "pruebaqr",
-          encoding: 'base64'
-        }
-		];
+		if(req.params.idevento == 8){
+			adjuntos = [
+			{
+			  path:"./resources/LogoLegis.jpg",  
+			  filename:"LogoLegis.jpg",  
+			  cid: "logolegis"
+			},
+			{
+			  path:"./resources/invitacionCerveza.png",  
+			  filename:"InvitaciónCerveza.png",  
+			  cid: "invitacioncerveza"
+			}
+			];
+		}else{
+			if(req.params.idevento == 9){
+				adjuntos = [
+				{
+				  path:"./resources/LogoLegis.jpg",  
+				  filename:"LogoLegis.jpg",  
+				  cid: "logolegis"
+				},
+				{
+				  path:"./resources/invitacionFlores.png",  
+				  filename:"InvitaciónFlores.png",  
+				  cid: "invitacionflores"
+				}
+				];
+			}else{
+				adjuntos = [
+				{
+				  path:"./resources/LogoLegis.jpg",  
+				  filename:"LogoLegis.jpg",  
+				  cid: "logolegis"
+				},
+				{
+				  path:"./resources/Congreso Propiedad Horizontal-01.jpg",  
+				  filename:"Congreso Propiedad Horizontal-01.jpg",  
+				  cid: "congreso1"
+				},
+				{
+				  path:"./resources/Congreso Propiedad Horizontal-02.jpg",  
+				  filename:"Congreso Propiedad Horizontal-02.jpg",  
+				  cid: "congreso2"
+				},
+				{
+				  filename: "QR.png",
+				  content: imagenQR,
+				  cid: "pruebaqr",
+				  encoding: 'base64'
+				}
+				];
+			}
+		}
 	}
 	
     let mailOptions = {

@@ -832,8 +832,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
     if(req.params.idevento == 7){
       //usuario = 'info@plussuperior.com';
       //clave = 'nQz3*m38';
-	  usuario = 'plusuperior@gmail.com';
-      clave = 'S1s73m4s';
+	  //usuario = 'plusuperior@gmail.com';
+      //clave = 'S1s73m4s';
+	  usuario = 'eventoslegis@kapulusinternational.com';
+      clave = 'KapuLegis18';
     }
 	TRANSPORT = {};
 	//if(req.params.idevento == 7){

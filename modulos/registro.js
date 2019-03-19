@@ -949,12 +949,12 @@ app.get('/asistente/:idevento', (req, res, next) => {
 						  encoding: 'base64'
 						},
 						{
-						  path:"./resources/LogoPlusSuperior.png",  
+						  path:"./resources/LogoPlusSuperior2.png",  
 						  filename:"LogoPlusSuperior.png",  
 						  cid: "logoplussuperior"
 						},
 						{
-						  path:"./resources/invitacionPlusSuperior.png",  
+						  path:"./resources/invitacionPlusSuperior2.png",  
 						  filename:"InvitacionPlusSuperior.png",  
 						  cid: "invitacionplussuperior"
 						}

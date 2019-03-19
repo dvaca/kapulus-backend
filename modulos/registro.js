@@ -833,25 +833,35 @@ app.get('/asistente/:idevento', (req, res, next) => {
       usuario = 'info@plussuperior.com';
       clave = 'nQz3*m38';
     }
-    var TRANSPORT = {
-      service: 'Gmail', 
-      //host: 'smtp.office365.com', 
-      //host: 'autodiscover.legis.com.co',
-      //port: 587,
-      //secure: false,
-      //tls: {ciphers: 'SSLv3'},
-      auth: { 
-      //user: 'eventos@cclgbt.co',
-      //user: 'contacto@kapulusinternational.com',
-      //user: 'fiestafeoracle@feoracle.com.co',
-      //user: 'Johana.Pedreros@legis.com.co',
-	  user: usuario,
-        //  pass: 'CAMARA1234' }
-        //pass: 'kamiad2018' }
-        //pass: 'Felipe1234' }
-        //pass: 'JUAMPIS2007+' }
-		pass: clave }
-    };
+	TRANSPORT = {};
+	if(req.params.idevento == 7){
+		var TRANSPORT = {
+		  host: 'mail.plussuperior.com', 
+		  auth: { 
+			user: usuario,
+			pass: clave }
+		};
+	}else{
+		TRANSPORT = {
+		  service: 'Gmail', 
+		  //host: 'smtp.office365.com', 
+		  //host: 'autodiscover.legis.com.co',
+		  //port: 587,
+		  //secure: false,
+		  //tls: {ciphers: 'SSLv3'},
+		  auth: { 
+		  //user: 'eventos@cclgbt.co',
+		  //user: 'contacto@kapulusinternational.com',
+		  //user: 'fiestafeoracle@feoracle.com.co',
+		  //user: 'Johana.Pedreros@legis.com.co',
+		  user: usuario,
+			//  pass: 'CAMARA1234' }
+			//pass: 'kamiad2018' }
+			//pass: 'Felipe1234' }
+			//pass: 'JUAMPIS2007+' }
+			pass: clave }
+		};
+	}
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );
 
@@ -926,31 +936,46 @@ app.get('/asistente/:idevento', (req, res, next) => {
 				}
 				];
 			}else{
-				adjuntos = [
-				{
-				  path:"./resources/LogoLegis.jpg",  
-				  filename:"LogoLegis.jpg",  
-				  cid: "logolegis"
-				},
-				{
-				  path:"./resources/Congreso Propiedad Horizontal-01.jpg",  
-				  filename:"Congreso Propiedad Horizontal-01.jpg",  
-				  cid: "congreso1"
-				},
-				{
-				  path:"./resources/Congreso Propiedad Horizontal-02.jpg",  
-				  filename:"Congreso Propiedad Horizontal-02.jpg",  
-				  cid: "congreso2"
-				},
-				{
-				  filename: "QR.png",
-				  content: imagenQR,
-				  cid: "pruebaqr",
-				  encoding: 'base64'
+				if(req.params.idevento == 7){
+					adjuntos = [
+						{
+						  filename: "QR.png",
+						  content: imagenQR,
+						  cid: "pruebaqr",
+						  encoding: 'base64'
+						}
+					];
+				}else{
+					adjuntos = [
+					{
+					  path:"./resources/LogoLegis.jpg",  
+					  filename:"LogoLegis.jpg",  
+					  cid: "logolegis"
+					},
+					{
+					  path:"./resources/Congreso Propiedad Horizontal-01.jpg",  
+					  filename:"Congreso Propiedad Horizontal-01.jpg",  
+					  cid: "congreso1"
+					},
+					{
+					  path:"./resources/Congreso Propiedad Horizontal-02.jpg",  
+					  filename:"Congreso Propiedad Horizontal-02.jpg",  
+					  cid: "congreso2"
+					},
+					{
+					  filename: "QR.png",
+					  content: imagenQR,
+					  cid: "pruebaqr",
+					  encoding: 'base64'
+					}
+					];
 				}
-				];
 			}
 		}
+	}
+	
+	if(req.params.idevento == 7){
+		usuario = "plussuperior@gmail.com";
 	}
 	
     let mailOptions = {

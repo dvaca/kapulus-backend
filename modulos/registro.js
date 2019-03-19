@@ -837,6 +837,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 7){
 		var TRANSPORT = {
 		  host: 'mail.plussuperior.com', 
+		  port: 587,
+		  secure: false, // true for 465, false for other ports
 		  auth: { 
 			user: usuario,
 			pass: clave }

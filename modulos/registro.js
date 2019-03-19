@@ -830,20 +830,22 @@ app.get('/asistente/:idevento', (req, res, next) => {
       clave = 'KapuLegis18';
     }
     if(req.params.idevento == 7){
-      usuario = 'info@plussuperior.com';
-      clave = 'nQz3*m38';
+      //usuario = 'info@plussuperior.com';
+      //clave = 'nQz3*m38';
+	  usuario = 'plusuperior@gmail.com';
+      clave = 'S1s73m4s';
     }
 	TRANSPORT = {};
-	if(req.params.idevento == 7){
-		var TRANSPORT = {
+	//if(req.params.idevento == 7){
+		/*var TRANSPORT = {
 		  host: 'mail.plussuperior.com', 
 		  port: 587,
 		  secure: false, // true for 465, false for other ports
 		  auth: { 
 			user: usuario,
 			pass: clave }
-		};
-	}else{
+		};*/
+	//}else{
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'smtp.office365.com', 
@@ -863,7 +865,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 			//pass: 'JUAMPIS2007+' }
 			pass: clave }
 		};
-	}
+	//}
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );
 

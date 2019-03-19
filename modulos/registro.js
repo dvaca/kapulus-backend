@@ -954,7 +954,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 						  cid: "logoplussuperior"
 						},
 						{
-						  path:"./resources/invitacionPlusSuperior2.png",  
+						  path:"./resources/InvitacionPlusSuperior2.png",  
 						  filename:"InvitacionPlusSuperior.png",  
 						  cid: "invitacionplussuperior"
 						}

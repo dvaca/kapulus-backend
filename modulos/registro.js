@@ -947,6 +947,16 @@ app.get('/asistente/:idevento', (req, res, next) => {
 						  content: imagenQR,
 						  cid: "pruebaqr",
 						  encoding: 'base64'
+						},
+						{
+						  path:"./resources/LogoPlusSuperior.png",  
+						  filename:"LogoPlusSuperior.png",  
+						  cid: "logoplussuperior"
+						},
+						{
+						  path:"./resources/invitacionPlusSuperior.png",  
+						  filename:"InvitacionPlusSuperior.png",  
+						  cid: "invitacionplussuperior"
 						}
 					];
 				}else{

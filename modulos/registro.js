@@ -951,13 +951,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 						  encoding: 'base64'
 						},
 						{
-						  path:"./resources/LogoPlusSuperior2.png",  
-						  filename:"LogoPlusSuperior.png",  
+						  path:"./resources/LogoPlusSuperior.jpg",  
+						  filename:"LogoPlusSuperior.jpg",  
 						  cid: "logoplussuperior"
 						},
 						{
-						  path:"./resources/InvitacionPlusSuperior2.png",  
-						  filename:"InvitacionPlusSuperior.png",  
+						  path:"./resources/InvitacionPlusSuperior.jpg",  
+						  filename:"InvitacionPlusSuperior.jpg",  
 						  cid: "invitacionplusuperior"
 						}
 					];

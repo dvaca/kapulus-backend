@@ -823,10 +823,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
     try{
     log('Start', 'CORREO ELECTRONICO', req.params.idevento);
     
-	let usuario = 'eventoslegis@kapulusinternational.com';
+	let usuario = 'eventos@kapulusinternational.com';
     let clave = 'KapuLegis18';
 	if(req.params.idevento == 5 || req.params.idevento == 6){
-      usuario = 'eventoslegis@kapulusinternational.com';
+      usuario = 'eventos@kapulusinternational.com';
       clave = 'KapuLegis18';
     }
     if(req.params.idevento == 7){
@@ -898,9 +898,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 6){
 		adjuntos = [
 		{
-          path:"./resources/LogoLegis.jpg",  
-          filename:"LogoLegis.jpg",  
-          cid: "logolegis"
+          path:"./resources/logoSemana.jpg",  
+          filename:"logoSemana.jpg",  
+          cid: "logosemana"
         },
         {
           path:"./resources/invitacionCerveza.png",  
@@ -917,9 +917,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		if(req.params.idevento == 8){
 			adjuntos = [
 			{
-			  path:"./resources/LogoLegis.jpg",  
-			  filename:"LogoLegis.jpg",  
-			  cid: "logolegis"
+			  path:"./resources/logoSemana.jpg",  
+			  filename:"logoSemana.jpg",  
+			  cid: "logosemana"
 			},
 			{
 			  path:"./resources/invitacionCerveza.png",  
@@ -931,9 +931,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 			if(req.params.idevento == 9){
 				adjuntos = [
 				{
-				  path:"./resources/LogoLegis.jpg",  
-				  filename:"LogoLegis.jpg",  
-				  cid: "logolegis"
+				  path:"./resources/logoSemana.jpg",  
+				  filename:"logoSemana.jpg",  
+				  cid: "logosemana"
 				},
 				{
 				  path:"./resources/invitacionFlores.png",  
@@ -964,9 +964,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 				}else{
 					adjuntos = [
 					{
-					  path:"./resources/LogoLegis.jpg",  
-					  filename:"LogoLegis.jpg",  
-					  cid: "logolegis"
+					  path:"./resources/logoSemana.jpg",  
+					  filename:"logoSemana.jpg",  
+					  cid: "logosemana"
 					},
 					{
 					  path:"./resources/Congreso Propiedad Horizontal-01.jpg",  

@@ -823,51 +823,18 @@ app.get('/asistente/:idevento', (req, res, next) => {
     try{
     log('Start', 'CORREO ELECTRONICO', req.params.idevento);
     
-	let usuario = 'eventos@kapulusinternational.com';
-    let clave = 'KapuLegis18';
-	if(req.params.idevento == 5 || req.params.idevento == 6){
-      usuario = 'eventos@kapulusinternational.com';
-      clave = 'KapuLegis18';
-    }
-    if(req.params.idevento == 7){
-      //usuario = 'info@plussuperior.com';
-      //clave = 'nQz3*m38';
-	  //usuario = 'plusuperior@gmail.com';
-      //clave = 'S1s73m4s';
-	  usuario = 'plusuperior@kapulusinternational.com';
-      clave = 'kamiad2018';
-    }
+	let usuario = 'foros@semana.com';
+    let clave = 'foros';
+	
 	TRANSPORT = {};
-	//if(req.params.idevento == 7){
-		/*var TRANSPORT = {
-		  host: 'mail.plussuperior.com', 
-		  port: 587,
-		  secure: false, // true for 465, false for other ports
-		  auth: { 
-			user: usuario,
-			pass: clave }
-		};*/
-	//}else{
 		TRANSPORT = {
 		  service: 'Gmail', 
-		  //host: 'smtp.office365.com', 
-		  //host: 'autodiscover.legis.com.co',
-		  //port: 587,
-		  //secure: false,
-		  //tls: {ciphers: 'SSLv3'},
 		  auth: { 
-		  //user: 'eventos@cclgbt.co',
 		  //user: 'contacto@kapulusinternational.com',
-		  //user: 'fiestafeoracle@feoracle.com.co',
-		  //user: 'Johana.Pedreros@legis.com.co',
 		  user: usuario,
-			//  pass: 'CAMARA1234' }
 			//pass: 'kamiad2018' }
-			//pass: 'Felipe1234' }
-			//pass: 'JUAMPIS2007+' }
 			pass: clave }
 		};
-	//}
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );
 
@@ -895,119 +862,45 @@ app.get('/asistente/:idevento', (req, res, next) => {
     }
     
 	let adjuntos;
-	if(req.params.idevento == 6){
-		adjuntos = [
-		{
+	if(req.body.tipo == 0){
+      adjuntos = [
+        {
+          path:"./resources/QRPremioPeriodismo1.jpg",  
+          filename:"QRPremioPeriodismo1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRPremioPeriodismo2.jpg",  
+          filename:"QRPremioPeriodismo2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+    }else{
+      adjuntos = [
+        {
           path:"./resources/logoSemana.jpg",  
           filename:"logoSemana.jpg",  
-          cid: "logosemana"
+          cid: "forossemana"
         },
         {
-          path:"./resources/invitacionCerveza.png",  
-          filename:"InvitaciónCerveza.png",  
-          cid: "invitacioncerveza"
-        },
-        {
-          path:"./resources/invitacionFlores.png",  
-          filename:"InvitaciónFlores.png",  
-          cid: "invitacionflores"
+          path:"./resources/InvitacionPremioPeriodismo.jpg",  
+          filename:"InvitacionPremioPeriodismo.jpg",  
+          cid: "invitacion"
         }
-		];
-	}else{
-		if(req.params.idevento == 8){
-			adjuntos = [
-			{
-			  path:"./resources/logoSemana.jpg",  
-			  filename:"logoSemana.jpg",  
-			  cid: "logosemana"
-			},
-			{
-			  path:"./resources/invitacionCerveza.png",  
-			  filename:"InvitaciónCerveza.png",  
-			  cid: "invitacioncerveza"
-			}
-			];
-		}else{
-			if(req.params.idevento == 9){
-				adjuntos = [
-				{
-				  path:"./resources/logoSemana.jpg",  
-				  filename:"logoSemana.jpg",  
-				  cid: "logosemana"
-				},
-				{
-				  path:"./resources/invitacionFlores.png",  
-				  filename:"InvitaciónFlores.png",  
-				  cid: "invitacionflores"
-				}
-				];
-			}else{
-				if(req.params.idevento == 7){
-					adjuntos = [
-						{
-						  filename: "QR.png",
-						  content: imagenQR,
-						  cid: "pruebaqr",
-						  encoding: 'base64'
-						},
-						{
-						  path:"./resources/LogoPlusSuperior.jpg",  
-						  filename:"LogoPlusSuperior.jpg",  
-						  cid: "logoplussuperior"
-						},
-						{
-						  path:"./resources/InvitacionPlusSuperior.jpg",  
-						  filename:"InvitacionPlusSuperior.jpg",  
-						  cid: "invitacionplusuperior"
-						}
-					];
-				}else{
-					adjuntos = [
-					{
-					  path:"./resources/logoSemana.jpg",  
-					  filename:"logoSemana.jpg",  
-					  cid: "logosemana"
-					},
-					{
-					  path:"./resources/Congreso Propiedad Horizontal-01.jpg",  
-					  filename:"Congreso Propiedad Horizontal-01.jpg",  
-					  cid: "congreso1"
-					},
-					{
-					  path:"./resources/Congreso Propiedad Horizontal-02.jpg",  
-					  filename:"Congreso Propiedad Horizontal-02.jpg",  
-					  cid: "congreso2"
-					},
-					{
-					  filename: "QR.png",
-					  content: imagenQR,
-					  cid: "pruebaqr",
-					  encoding: 'base64'
-					}
-					];
-				}
-			}
-		}
-	}
-	
-	if(req.params.idevento == 7){
-		usuario = "plussuperior@gmail.com";
-	}
-	
+      ]
+    }
+		
     let mailOptions = {
-      //from: 'eventos@cclgbt.co',
       //from: 'contacto@kapulusinternational.com',
-	    //from: 'mercadeoempresarial2@ecci.edu.co',
-      //from: 'fiestafeoracle@feoracle.com.co',
-      //from: 'Johana.Pedreros@legis.com.co',
 	  from: usuario,
       to:   req.body.email,
-      //to:   'contacto@kapulusinternational.com',
-      //subject: 'Correo de confirmación WeTrade',
-	  //subject: 'Invitación Congreso de Actualización en Propiedad Horizontal',
 	  subject: req.body.subject,
-      //text: 'Hello world?', // plain text body
-      //html:    req.body.html,// HTML
       html:    html,// HTML
       attachments: adjuntos
     };
@@ -1027,6 +920,28 @@ app.get('/asistente/:idevento', (req, res, next) => {
       console.log(error);
     }
   });
+  
+  //#region login
+ app.post('/login/:idevento', (req, res, next) => {
+  var listaUsuarios;
+  log('Start', 'LOGIN', req.params.idevento);
+  db.query(`SELECT * FROM usuario u 
+            WHERE u.nombre = $1
+              AND u.contrasena = $2`, 
+    [req.body.nombre, req.body.contrasena], (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      listaUsuarios = result.rows;
+      log('End', 'LOGIN', req.params.idevento);
+      if(listaUsuarios.length == 0){
+        res.send({acceso: "denegado"});
+      }else{
+        res.send({acceso: "aprobado"});
+      }
+    });
+ });
+ //#endregion
   
 function arbolAsistentes(listaPadre, listaHijos) {
   try{

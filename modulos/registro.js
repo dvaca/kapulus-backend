@@ -823,10 +823,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
     try{
     log('Start', 'CORREO ELECTRONICO', req.params.idevento);
     
-	//let usuario = 'foros@semana.com';
-    //let clave = 'foros';
-    let usuario = 'eventossemana@semana.com';
+	let usuario = 'foros@semana.com';
     let clave = 'foros';
+    //let usuario = 'eventossemana@semana.com';
+    //let clave = 'foros';
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -896,7 +896,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		
     let mailOptions = {
       //from: 'contacto@kapulusinternational.com',
-	  from: usuario,
+	  //from: usuario,
+	  from: 'eventossemana@semana.com';
       to:   req.body.email,
 	  subject: req.body.subject,
       html:    html,// HTML

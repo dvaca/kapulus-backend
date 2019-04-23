@@ -897,7 +897,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     let mailOptions = {
       //from: 'contacto@kapulusinternational.com',
 	  //from: usuario,
-	  from: 'eventossemana@semana.com';
+	  from: 'eventos@semana.com';
       to:   req.body.email,
 	  subject: req.body.subject,
       html:    html,// HTML

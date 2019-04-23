@@ -887,7 +887,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     }else{ //INVITACION
       adjuntos = [
         {
-          path:"./resources/QRPremioPeriodismo1.jpg",  
+          path:"./resources/InvitacionPremioPeriodismo2.jpg",  
           filename:"InvitacionPremioPeriodismo.jpg",  
           cid: "invitacion"
         }

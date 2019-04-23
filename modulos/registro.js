@@ -823,7 +823,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
     try{
     log('Start', 'CORREO ELECTRONICO', req.params.idevento);
     
-	let usuario = 'foros@semana.com';
+	//let usuario = 'foros@semana.com';
+    //let clave = 'foros';
+    let usuario = 'eventossemana@semana.com';
     let clave = 'foros';
 	
 	TRANSPORT = {};
@@ -862,6 +864,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     }
     
 	let adjuntos;
+	//CONFIRMACION
 	if(req.body.tipo == 0){
       adjuntos = [
         {
@@ -881,15 +884,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
           encoding: 'base64'
         }
       ]
-    }else{
+    }else{ //INVITACION
       adjuntos = [
         {
-          path:"./resources/logoSemana.jpg",  
-          filename:"logoSemana.jpg",  
-          cid: "forossemana"
-        },
-        {
-          path:"./resources/InvitacionPremioPeriodismo.jpg",  
+          path:"./resources/QRPremioPeriodismo1.jpg",  
           filename:"InvitacionPremioPeriodismo.jpg",  
           cid: "invitacion"
         }

@@ -275,7 +275,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
     
   sqlQuery = `select * 
   from asistente
-  where idevento = $1`;    
+  where idevento = $1
+  ORDER BY identificacion`;        
   
   db.query(sqlQuery, 
             [req.params.idevento], (err, result) => {

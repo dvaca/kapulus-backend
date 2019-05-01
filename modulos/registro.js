@@ -867,6 +867,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	let adjuntos;
 	//CONFIRMACION
 	if(req.body.tipo == 0){
+	  if(req.params.idevento == 10){
       adjuntos = [
         {
           path:"./resources/QRPremioPeriodismo1.jpg",  
@@ -885,6 +886,27 @@ app.get('/asistente/:idevento', (req, res, next) => {
           encoding: 'base64'
         }
       ]
+	  }
+	  if(req.params.idevento == 11){
+      adjuntos = [
+        {
+          path:"./resources/QRBolivar1.jpg",  
+          filename:"QRBolivar1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRBolivar2.jpg",  
+          filename:"QRBolivar2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
       adjuntos = [
         {
@@ -894,11 +916,19 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
     }
-		
+	
+	let correoEnvia;
+	if(req.params.idevento == 10){
+		correoEnvia = 'eventos@semana.com';
+	}
+	if(req.params.idevento == 11){
+		correoEnvia = 'foros@semana.com';
+	}
+	
     let mailOptions = {
       //from: 'contacto@kapulusinternational.com',
 	  //from: usuario,
-	  from: 'eventos@semana.com',
+	  from: correoEnvia,
       to:   req.body.email,
 	  subject: req.body.subject,
       html:    html,// HTML

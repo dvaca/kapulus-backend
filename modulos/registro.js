@@ -972,6 +972,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
     });
  });
  //#endregion
+ 
+ //#region Sincronizacion
+   //RETORNA TODOS LOS REGISTROS DE ESTADISTICAS LOCALES
+  app.get('/sincronizar/estadisticas/:idevento/', (req, res, next) => {
+    var estadisticas;
+    log('Start', 'ESTADISTICAS LOCALES', req.params.idevento);
+    db.query(`SELECT *
+              FROM estadisticas
+              WHERE idevento = $1
+              `, 
+              [req.params.idevento], (err, result) => { 
+      if (err) {
+        return next(err);
+      }
+      estadisticas = result.rows;
+      log('End', 'ESTADISTICAS LOCALES', req.params.idevento);
+      res.send(estadisticas);
+    });
+  });
+ //#endregion
   
 function arbolAsistentes(listaPadre, listaHijos) {
   try{

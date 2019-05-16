@@ -824,10 +824,12 @@ app.get('/asistente/:idevento', (req, res, next) => {
     try{
     log('Start', 'CORREO ELECTRONICO', req.params.idevento);
     
-	let usuario = 'foros@semana.com';
-    let clave = 'foros';
+	//let usuario = 'foros@semana.com';
+    //let clave = 'foros';
     //let usuario = 'eventossemana@semana.com';
     //let clave = 'foros';
+	let usuario = 'coosalud@kapulusinternational.com';
+    let clave = 'KapuEventos';
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -945,7 +947,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'foros@semana.com';
 	}
 	if(req.params.idevento == 13){
-		correoEnvia = 'rendiciondecuentas@coosalud.com';
+		correoEnvia = 'coosalud@kapulusinternational.com';
 	}
 	
     let mailOptions = {

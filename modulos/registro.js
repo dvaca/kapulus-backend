@@ -907,6 +907,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 13){
+      adjuntos = [
+        {
+          path:"./resources/CoosaludHeader.jpg",  
+          filename:"CoosaludHeader.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/CoosaludFooter.jpg",  
+          filename:"CoosaludFooter.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
       adjuntos = [
         {

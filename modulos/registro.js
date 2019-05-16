@@ -944,6 +944,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 11){
 		correoEnvia = 'foros@semana.com';
 	}
+	if(req.params.idevento == 13){
+		correoEnvia = 'rendiciondecuentas@coosalud.com';
+	}
 	
     let mailOptions = {
       //from: 'contacto@kapulusinternational.com',

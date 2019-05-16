@@ -828,7 +828,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     //let clave = 'foros';
     //let usuario = 'eventossemana@semana.com';
     //let clave = 'foros';
-	let usuario = 'coosalud@kapulusinternational.com';
+	let usuario = 'eventoscoosalud@kapulusinternational.com';
     let clave = 'KapuEventos';
 	
 	TRANSPORT = {};
@@ -947,7 +947,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'foros@semana.com';
 	}
 	if(req.params.idevento == 13){
-		correoEnvia = 'coosalud@kapulusinternational.com';
+		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
 	}
 	
     let mailOptions = {

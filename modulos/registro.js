@@ -930,13 +930,24 @@ app.get('/asistente/:idevento', (req, res, next) => {
       ]
 	  }
     }else{ //INVITACION
+	  if(req.params.idevento == 14){
       adjuntos = [
         {
-          path:"./resources/InvitacionPremioPeriodismo2.jpg",  
-          filename:"InvitacionPremioPeriodismo.jpg",  
+          path:"./resources/invitacionCSBmanga.jpg",  
+          filename:"invitacionCSBmanga.jpg",  
           cid: "invitacion"
         }
       ]
+	  }
+	  if(req.params.idevento == 15){
+      adjuntos = [
+        {
+          path:"./resources/invitacionAbbvie.jpg",  
+          filename:"invitacionAbbvie.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -948,6 +959,12 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 13){
 		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
+	}
+	if(req.params.idevento == 14){
+		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
+	}
+	if(req.params.idevento == 15){
+		correoEnvia = 'foros@semana.com';
 	}
 	
     let mailOptions = {

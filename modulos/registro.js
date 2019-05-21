@@ -830,6 +830,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
     //let clave = 'foros';
 	let usuario = 'eventoscoosalud@kapulusinternational.com';
     let clave = 'KapuEventos';
+	if(req.params.idevento == 15){
+		usuario = 'foros@semana.com';
+		clave = 'foros';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {

@@ -830,7 +830,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     //let clave = 'foros';
 	let usuario = 'eventoscoosalud@kapulusinternational.com';
     let clave = 'KapuEventos';
-	if(req.params.idevento == 15){
+	if(req.params.idevento == 15 || req.params.idevento == 16){
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
@@ -933,6 +933,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 16){
+      adjuntos = [
+        {
+          path:"./resources/QRConversatorio1.jpg",  
+          filename:"QRConversatorio1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRConversatorio2.jpg",  
+          filename:"QRConversatorio2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -948,6 +968,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         {
           path:"./resources/invitacionAbbvie.jpg",  
           filename:"invitacionAbbvie.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
+	  if(req.params.idevento == 16){
+      adjuntos = [
+        {
+          path:"./resources/MailingConversatorio_VF.jpg",  
+          filename:"MailingConversatorio_VF.jpg",  
           cid: "invitacion"
         }
       ]
@@ -968,6 +997,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
 	}
 	if(req.params.idevento == 15){
+		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 16){
 		correoEnvia = 'foros@semana.com';
 	}
 	

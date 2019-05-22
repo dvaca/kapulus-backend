@@ -835,7 +835,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'foros';
 	}
 	if(req.params.idevento == 16){
-		usuario = 'eventossemana@semana.com';
+		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
 	
@@ -1004,7 +1004,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'foros@semana.com';
 	}
 	if(req.params.idevento == 16){
-		correoEnvia = 'eventossemana@semana.com';
+		correoEnvia = 'eventos@semana.com';
 	}
 	
     let mailOptions = {

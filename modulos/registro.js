@@ -957,6 +957,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 17){
+      adjuntos = [
+        {
+          path:"./resources/QRCoosaludMedellin1.jpg",  
+          filename:"QRCoosaludMedellin1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRCoosaludMedellin2.jpg",  
+          filename:"QRCoosaludMedellin2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1005,6 +1025,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 16){
 		correoEnvia = 'eventos@semana.com';
+	}
+	if(req.params.idevento == 17){
+		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
 	}
 	
     let mailOptions = {

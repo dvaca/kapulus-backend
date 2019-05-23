@@ -985,7 +985,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
           cid: "confirmacionheader"
         },
         {
-          path:"./resources/QRAbbvie1.jpg",  
+          path:"./resources/QRAbbvie2.jpg",  
           filename:"QRAbbvie1.jpg",  
           cid: "confirmacionfooter"
         },

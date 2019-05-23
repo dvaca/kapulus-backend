@@ -917,6 +917,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 12){
+      adjuntos = [
+        {
+          path:"./resources/QRCartagena1.jpg",  
+          filename:"QRCartagena1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRCartagena2.jpg",  
+          filename:"QRCartagena2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
 	  if(req.params.idevento == 13){
       adjuntos = [
         {
@@ -927,6 +947,46 @@ app.get('/asistente/:idevento', (req, res, next) => {
         {
           path:"./resources/CoosaludFooter.jpg",  
           filename:"CoosaludFooter.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
+	  if(req.params.idevento == 14){
+      adjuntos = [
+        {
+          path:"./resources/QRBucaramanga1.jpg",  
+          filename:"QRBucaramanga1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRBucaramanga2.jpg",  
+          filename:"QRBucaramanga2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
+	  if(req.params.idevento == 15){
+      adjuntos = [
+        {
+          path:"./resources/QRAbbvie1.jpg",  
+          filename:"QRAbbvie1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRAbbvie1.jpg",  
+          filename:"QRAbbvie1.jpg",  
           cid: "confirmacionfooter"
         },
         {
@@ -1013,6 +1073,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 11){
 		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 12){
+		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
 	}
 	if(req.params.idevento == 13){
 		correoEnvia = 'eventoscoosalud@kapulusinternational.com';

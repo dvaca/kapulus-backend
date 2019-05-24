@@ -275,7 +275,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     
   sqlQuery = `select * 
   from asistente
-  where idevento = $1
+  where idevento = $1 and actualizado = true
   ORDER BY identificacion`;        
   
   db.query(sqlQuery, 
@@ -290,7 +290,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
         on a.id = aa.idasistente
         inner join camposevento c
         on aa.idcampo = c.id
-        where a.idevento = $1
+        where a.idevento = $1 and actualizado = true
         and c.ordenregistro is not null
         order by c.ordenregistro`, [req.params.idevento], (err, result) => {
       if (err) {

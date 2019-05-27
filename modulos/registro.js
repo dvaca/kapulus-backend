@@ -838,6 +838,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 18){
+		usuario = 'foros@semana.com';
+		clave = 'foros';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1037,6 +1041,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 18){
+      adjuntos = [
+        {
+          path:"./resources/QRMujeres1.jpg",  
+          filename:"QRMujeres1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRMujeres2.jpg",  
+          filename:"QRMujeres2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1061,6 +1085,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         {
           path:"./resources/MailingConversatorio_VF.jpg",  
           filename:"MailingConversatorio_VF.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
+	  if(req.params.idevento == 18){
+      adjuntos = [
+        {
+          path:"./resources/invitacionMujeres.jpg",  
+          filename:"invitacionMujeres.jpg",  
           cid: "invitacion"
         }
       ]
@@ -1091,6 +1124,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 17){
 		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
+	}
+	if(req.params.idevento == 18){
+		correoEnvia = 'foros@semana.com';
 	}
 	
     let mailOptions = {

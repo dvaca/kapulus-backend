@@ -842,6 +842,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 20){
+		usuario = 'eventoscoosalud@kapulusinternational.com';
+		clave = 'KapuEventos';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1098,6 +1102,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 20){
+      adjuntos = [
+        {
+          path:"./resources/invitacionCali.jpg",  
+          filename:"invitacionCali.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -1127,6 +1140,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 18){
 		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 20){
+		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
 	}
 	
     let mailOptions = {

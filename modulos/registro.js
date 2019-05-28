@@ -846,6 +846,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'eventoscoosalud@kapulusinternational.com';
 		clave = 'KapuEventos';
 	}
+	if(req.params.idevento == 21){
+		usuario = 'foros@semana.com';
+		clave = 'foros';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1065,6 +1069,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 21){
+      adjuntos = [
+        {
+          path:"./resources/QRProBogota1.jpg",  
+          filename:"QRProBogota1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRProBogota2.jpg",  
+          filename:"QRProBogota2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }	  
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1143,6 +1167,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 20){
 		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
+	}
+	if(req.params.idevento == 21){
+		correoEnvia = 'foros@semana.com';
 	}
 	
     let mailOptions = {

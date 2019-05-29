@@ -850,6 +850,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 22){
+		usuario = 'foros@semana.com';
+		clave = 'foros';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1089,6 +1093,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }	  
+	  if(req.params.idevento == 22){
+      adjuntos = [
+        {
+          path:"./resources/QRContraloria1.jpg",  
+          filename:"QRContraloria1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRContraloria2.jpg",  
+          filename:"QRContraloria2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }	  
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1169,6 +1193,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
 	}
 	if(req.params.idevento == 21){
+		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 22){
 		correoEnvia = 'foros@semana.com';
 	}
 	

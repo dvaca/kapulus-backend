@@ -287,7 +287,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
     db.query(`select aa.*, c.nombre 
         from asistente a 
 		inner join camposevento c
-		on a.idasistente = c.idasistente
+		on a.idevento = c.idevento
         left join atributosasistente aa
         on a.id = aa.idasistente
         and aa.idcampo = c.id

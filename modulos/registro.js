@@ -286,13 +286,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
     listaAsistentes = result.rows;
     db.query(`select aa.*, c.nombre 
         from asistente a 
-        inner join atributosasistente aa
+		inner join camposevento c
+		on a.idasistente = c.idasistente
+        left join atributosasistente aa
         on a.id = aa.idasistente
-        inner join camposevento c
-        on aa.idcampo = c.id
+        and aa.idcampo = c.id
         where a.idevento = $1
-        and c.ordenregistro is not null
-        order by c.ordenregistro`, [req.params.idevento], (err, result) => {
+        order by c.ordenregistro, c.id`, [req.params.idevento], (err, result) => {
       if (err) {
         return next(err);
       }

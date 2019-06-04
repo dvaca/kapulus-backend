@@ -854,6 +854,14 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 23){
+		usuario = 'eventoscoosalud@kapulusinternational.com';
+		clave = 'KapuEventos';
+	}
+	if(req.params.idevento == 24){
+		usuario = 'foros@semana.com';
+		clave = 'foros';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1112,6 +1120,46 @@ app.get('/asistente/:idevento', (req, res, next) => {
           encoding: 'base64'
         }
       ]
+	  }
+	  if(req.params.idevento == 23){
+      adjuntos = [
+        {
+          path:"./resources/CoosaludBogota1.jpg",  
+          filename:"CoosaludBogota1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/CoosaludBogota2.jpg",  
+          filename:"CoosaludBogota2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
+	  if(req.params.idevento == 24){
+      adjuntos = [
+        {
+          path:"./resources/QRCAR1.jpg",  
+          filename:"QRCAR1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRCAR2.jpg",  
+          filename:"QRCAR2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
 	  }	  
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
@@ -1159,6 +1207,24 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 23){
+      adjuntos = [
+        {
+          path:"./resources/invitacionBogota.jpg",  
+          filename:"invitacionBogota.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
+	  if(req.params.idevento == 24){
+      adjuntos = [
+        {
+          path:"./resources/invitacionRioBogota.jpg",  
+          filename:"invitacionRioBogota.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -1197,6 +1263,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 22){
 		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 23){
+		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
 	}
 	
     let mailOptions = {

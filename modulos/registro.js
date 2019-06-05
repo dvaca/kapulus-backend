@@ -1081,6 +1081,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 20){
+      adjuntos = [
+        {
+          path:"./resources/CoosaludCali1.jpg",  
+          filename:"CoosaludCali1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/CoosaludCali2.jpg",  
+          filename:"CoosaludCali2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }	  
 	  if(req.params.idevento == 21){
       adjuntos = [
         {

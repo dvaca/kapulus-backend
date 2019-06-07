@@ -1310,7 +1310,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'foros@semana.com';
 	}
 	if(req.params.idevento == 25){
-		correoEnvia =  = 'fiestafeoracle@feoracle.com.co';		
+		correoEnvia = 'fiestafeoracle@feoracle.com.co';		
 	}
 	
     let mailOptions = {

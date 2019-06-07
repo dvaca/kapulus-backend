@@ -862,6 +862,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 25){
+		usuario = 'fiestafeoracle@feoracle.com.co';
+		clave = ' oracle2019';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1180,6 +1184,21 @@ app.get('/asistente/:idevento', (req, res, next) => {
           encoding: 'base64'
         }
       ]
+	  }
+	  if(req.params.idevento == 25){
+      adjuntos = [
+        {
+          path:"./resources/LogoOracle.png",  
+          filename:"LogoOracle.png",  
+          cid: "confirmacionheader"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
 	  }	  
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
@@ -1286,6 +1305,12 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 23){
 		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
+	}
+	if(req.params.idevento == 24){
+		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 25){
+		correoEnvia =  = 'fiestafeoracle@feoracle.com.co';		
 	}
 	
     let mailOptions = {

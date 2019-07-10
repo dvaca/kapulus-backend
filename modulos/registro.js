@@ -866,6 +866,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'fiestafeoracle@feoracle.com.co';
 		clave = ' oracle2019';
 	}
+	if(req.params.idevento == 28){
+		usuario = 'ied2019@experienciasintel.com';
+		clave = ' Latone2019!';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1199,7 +1203,27 @@ app.get('/asistente/:idevento', (req, res, next) => {
           encoding: 'base64'
         }
       ]
-	  }	  
+	  }
+	  if(req.params.idevento == 28){
+      adjuntos = [
+        {
+          path:"./resources/QRIED1.jpg",  
+          filename:"QRIED1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QRIED2.jpg",  
+          filename:"QRIED2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1311,6 +1335,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 25){
 		correoEnvia = 'fiestafeoracle@feoracle.com.co';		
+	}
+	if(req.params.idevento == 28){
+		correoEnvia = 'ied2019@experienciasintel.com';		
 	}
 	
     let mailOptions = {

@@ -871,7 +871,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'Latone2019!';
 	}
 	if(req.params.idevento == 29){
-		usuario = 'eventossemana@semana.com';
+		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
 	

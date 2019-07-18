@@ -871,8 +871,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'Latone2019!';
 	}
 	if(req.params.idevento == 29){
-		usuario = 'eventoscoosalud@kapulusinternational.com';
-		clave = 'KapuEventos';
+		usuario = 'eventossemana@semana.com';
+		clave = 'foros';
 	}
 	
 	TRANSPORT = {};
@@ -1231,13 +1231,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	  if(req.params.idevento == 29){
       adjuntos = [
         {
-          path:"./resources/headerProsegur.jpg",  
-          filename:"headerProsegur.jpg",  
+          path:"./resources/headerQRProsegur.jpg",  
+          filename:"headerQRProsegur.jpg",  
           cid: "confirmacionheader"
         },
         {
-          path:"./resources/footerProsegur.png",  
-          filename:"footerProsegur.png",  
+          path:"./resources/footerQRProsegur.png",  
+          filename:"footerQRProsegur.png",  
           cid: "confirmacionfooter"
         },
         {
@@ -1315,8 +1315,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	  if(req.params.idevento == 29){
       adjuntos = [
         {
-          path:"./resources/footerProsegur.png",  
-          filename:"footerProsegur.png",  
+          path:"./resources/invitacionProsegur.jpg",  
+          filename:"invitacionProsegur.jpg",  
           cid: "invitacion"
         }
       ]
@@ -1373,7 +1373,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'ied2019@experienciasintel.com';		
 	}
 	if(req.params.idevento == 29){
-		correoEnvia = 'eventoscoosalud@kapulusinternational.com';
+		correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventossemana@semana.com>';
 	}
 	
     let mailOptions = {

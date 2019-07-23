@@ -871,7 +871,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'Latone2019!';
 	}
 	if(req.params.idevento == 29){
-		usuario = 'foros@semana.com';
+		//usuario = 'foros@semana.com';
+		//clave = 'foros';
+		usuario = 'eventos@semana.com';
 		clave = 'foros';
 	}
 	
@@ -1373,7 +1375,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'ied2019@experienciasintel.com';		
 	}
 	if(req.params.idevento == 29){
-		correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventossemana@semana.com>';
+		//correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventossemana@semana.com>';
+		correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventos@semana.com>';
 	}
 	
     let mailOptions = {

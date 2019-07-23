@@ -873,7 +873,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 29){
 		//usuario = 'foros@semana.com';
 		//clave = 'foros';
-		usuario = 'eventos@semana.com';
+		usuario = 'eventossemana@semana.com';
 		clave = 'foros';
 	}
 	

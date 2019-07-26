@@ -273,10 +273,32 @@ app.get('/asistente/:idevento', (req, res, next) => {
 
   log('Start', 'ASISTENTES EXPORTAR', req.params.idevento);
     
-  sqlQuery = `select * 
-  from asistente
-  where idevento = $1
-  ORDER BY identificacion`;        
+  sqlQuery = `select a.*, 
+  b.fechaCreacion,
+  c.fechaInvitacion
+    from asistente a
+    left join (
+      select min(az.fecha) as fechacreacion, az.idasistente 
+      from asistenciazona az
+      inner join zona z
+      on z.id = az.idzona
+      where az.idoperacion = 1
+      and z.idevento = $1
+      group by az.idasistente
+    )b
+    on a.id = b.idasistente
+    left join (
+      select min(az.fecha) as fechainvitacion, az.idasistente 
+      from asistenciazona az
+      inner join zona z
+      on z.id = az.idzona
+      where az.idoperacion = 11
+      and z.idevento = $1
+      group by az.idasistente
+    )c
+    on a.id = c.idasistente
+    where a.idevento = $1
+    ORDER BY a.identificacion`;        
   
   db.query(sqlQuery, 
             [req.params.idevento], (err, result) => {
@@ -284,7 +306,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
       return next(err);
     }
     listaAsistentes = result.rows;
-    db.query(`select aa.*, c.nombre 
+    db.query(`select a.id as idasistente, aa.idcampo, aa.idvalorseleccionado, aa.valor, c.nombre 
         from asistente a 
 		inner join camposevento c
 		on a.idevento = c.idevento

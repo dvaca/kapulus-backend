@@ -275,7 +275,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
     
   sqlQuery = `select a.*, 
   b.fechaCreacion,
-  c.fechaInvitacion
+  c.fechaInvitacion,
+  e.fechaIngresoOnline
     from asistente a
     left join (
       select min(az.fecha) as fechacreacion, az.idasistente 
@@ -297,6 +298,16 @@ app.get('/asistente/:idevento', (req, res, next) => {
       group by az.idasistente
     )c
     on a.id = c.idasistente
+	left join (
+      select min(az.fecha) as fechaingresoonline, az.idasistente 
+      from asistenciazona az
+      inner join zona z
+      on z.id = az.idzona
+      where az.idoperacion = 13
+      and z.idevento = $1
+      group by az.idasistente
+    )e
+    on a.id = e.idasistente
     where a.idevento = $1
     ORDER BY a.identificacion`;        
   
@@ -330,12 +341,14 @@ app.get('/asistente/:idevento', (req, res, next) => {
     var atributo, asistente;    
     log('Start', 'CREA ASISTENTE', req.body.identificacion);
     db.query(`INSERT INTO asistente(
-                tipoid, identificacion, idevento, registrado, preinscrito)
-              VALUES (1, $1, $2, $3, $4);`, 
+                tipoid, identificacion, idevento, registrado, preinscrito, codigocontrolacceso, online)
+              VALUES (1, $1, $2, $3, $4, $5, $6);`, 
               [req.body.identificacion, 
                 req.params.idevento,
                 req.body.registrado,
-                req.body.preinscrito
+                req.body.preinscrito,
+				req.body.codigocontrolacceso,
+				req.body.online
               ], (err, result) => {
       if (err) {
         return next(err);
@@ -375,13 +388,17 @@ app.get('/asistente/:idevento', (req, res, next) => {
     log('Start', 'ACTUALIZA ASISTENTE', req.body.identificacion);
     db.query(`UPDATE asistente
               SET registrado = $3,
-              actualizado = $4
+              actualizado = $4,
+              codigocontrolacceso = $5,
+              online = $6
               WHERE identificacion = $1
                 AND idevento = $2;`, 
               [req.body.identificacion, 
                 req.params.idevento,
                 req.body.registrado,
-                req.body.actualizado
+                req.body.actualizado,
+                req.body.codigocontrolacceso,
+                req.body.online
               ], (err, result) => {
       if (err) {
         return next(err);

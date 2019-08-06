@@ -1440,7 +1440,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventos@semana.com>';
 	}
         if(req.params.idevento == 30){
-		correoEnvia = 'foros@semana.com';
+		correoEnvia = 'Eventos Semana <eventos@semana.com>';
 	}
 	
     let mailOptions = {

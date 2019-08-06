@@ -913,6 +913,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 30){
+		usuario = 'foros@semana.com';
+		clave = 'foros';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1287,6 +1291,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 30){
+      adjuntos = [
+        {
+          path:"./resources/QueEsLoQueComoHeader.jpg",  
+          filename:"QueEsLoQueComoHeader.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/QueEsLoQueComoFooter.jpg",  
+          filename:"QueEsLoQueComoFooter.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }	
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1414,6 +1438,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 29){
 		//correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventossemana@semana.com>';
 		correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventos@semana.com>';
+	}
+        if(req.params.idevento == 30){
+		correoEnvia = 'foros@semana.com';
 	}
 	
     let mailOptions = {

@@ -917,6 +917,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 33){
+		usuario = 'contacto@kapulusinternational.com';
+		clave = 'kamiad2018';
+	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
@@ -1310,7 +1314,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
           encoding: 'base64'
         }
       ]
-	  }	
+	  }
+	  if(req.params.idevento == 33){
+      adjuntos = [
+        {
+          path:"./resources/logoCopnia.png",  
+          filename:"logoCopnia.png",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/programacionCopnia.PNG",  
+          filename:"programacionCopnia.PNG"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }	  
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1439,8 +1462,11 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		//correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventossemana@semana.com>';
 		correoEnvia = 'Encuentro Prosegur Soluciones Integrales <eventos@semana.com>';
 	}
-        if(req.params.idevento == 30){
+    if(req.params.idevento == 30){
 		correoEnvia = 'Eventos Semana <eventos@semana.com>';
+	}
+	if(req.params.idevento == 33){
+		correoEnvia = 'Congreso de Ética profesional <contacto@kapulusinternational.com>';
 	}
 	
     let mailOptions = {

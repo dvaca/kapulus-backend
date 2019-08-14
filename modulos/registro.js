@@ -919,7 +919,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 33){
 		usuario = 'contacto@kapulusinternational.com';
-		clave = 'kamiad2018';
+		clave = '1*Kapu*2';
 	}
 	
 	TRANSPORT = {};

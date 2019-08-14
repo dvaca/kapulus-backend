@@ -918,13 +918,18 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'foros';
 	}
 	if(req.params.idevento == 33){
-		usuario = 'contacto@kapulusinternational.com';
-		clave = '1*Kapu*2';
+		//usuario = 'contacto@kapulusinternational.com';
+		usuario = 'comunicaciones@congresodeetica.com.co';
+		//clave = '1*Kapu*2';
+		clave = 'Congreso2019*';
 	}
 	
 	TRANSPORT = {};
 		TRANSPORT = {
-		  service: 'Gmail', 
+		  //service: 'Gmail', 
+		  host: 'https://congresodeetica.com.co',
+		  port: 2096,
+		  secure: false,
 		  auth: { 
 		  //user: 'contacto@kapulusinternational.com',
 		  user: usuario,
@@ -1466,7 +1471,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Eventos Semana <eventos@semana.com>';
 	}
 	if(req.params.idevento == 33){
-		correoEnvia = 'Congreso de Ética profesional <contacto@kapulusinternational.com>';
+		//correoEnvia = 'Congreso de Ética profesional <contacto@kapulusinternational.com>';
+		correoEnvia = 'Congreso de Ética profesional <comunicaciones@congresodeetica.com.co>';
 	}
 	
     let mailOptions = {

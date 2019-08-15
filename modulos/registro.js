@@ -929,7 +929,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		  //service: 'Gmail', 
 		  host: 'mail.congresodeetica.com.co',
 		  port: 26,
-		  secure: false,
+		  secure: true,
 		  auth: { 
 		  //user: 'contacto@kapulusinternational.com',
 		  user: usuario,

@@ -934,7 +934,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		  //user: 'contacto@kapulusinternational.com',
 		  user: usuario,
 			//pass: 'kamiad2018' }
-			pass: clave }
+			pass: clave },
+		tls: {
+			rejectUnauthorized: false
+		    }
 		};
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );

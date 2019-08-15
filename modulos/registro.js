@@ -928,7 +928,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		TRANSPORT = {
 		  //service: 'Gmail', 
 		  host: 'mail.congresodeetica.com.co',
-		  port: 143,
+		  port: 465,
 		  secure: false,
 		  auth: { 
 		  //user: 'contacto@kapulusinternational.com',

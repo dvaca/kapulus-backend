@@ -1326,13 +1326,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	  if(req.params.idevento == 33){
       adjuntos = [
         {
-          path:"./resources/BannerConfirmacionCorreo.jpg",  
-          filename:"BannerConfirmacionCorreo.jpg",  
+          path:"./resources/BannerConfirmacionCorreo.png",  
+          filename:"BannerConfirmacionCorreo.png",  
           cid: "confirmacionheader"
         },
 		{
-          path:"./resources/PieConfirmacionCorreo.jpg",  
-          filename:"PieConfirmacionCorreo.jpg",  
+          path:"./resources/PieConfirmacionCorreo.png",  
+          filename:"PieConfirmacionCorreo.png",  
           cid: "confirmacionfooter"
         },
 		{

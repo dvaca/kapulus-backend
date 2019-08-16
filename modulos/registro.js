@@ -1331,6 +1331,16 @@ app.get('/asistente/:idevento', (req, res, next) => {
           cid: "confirmacionheader"
         },
 		{
+          path:"./resources/BannerConfirmacionCorreo.jpg",  
+          filename:"BannerConfirmacionCorreo.jpg",  
+          cid: "banner"
+        },
+		{
+          path:"./resources/PieConfirmacionCorreo.jpg",  
+          filename:"PieConfirmacionCorreo.jpg",  
+          cid: "confirmacionfooter"
+        },
+		{
           path:"./resources/programacionCopnia.PNG",  
           filename:"programacionCopnia.PNG"
         },

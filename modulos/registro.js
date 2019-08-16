@@ -1326,14 +1326,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	  if(req.params.idevento == 33){
       adjuntos = [
         {
-          path:"./resources/logoCopnia.png",  
-          filename:"logoCopnia.png",  
-          cid: "confirmacionheader"
-        },
-		{
           path:"./resources/BannerConfirmacionCorreo.jpg",  
           filename:"BannerConfirmacionCorreo.jpg",  
-          cid: "banner"
+          cid: "confirmacionheader"
         },
 		{
           path:"./resources/PieConfirmacionCorreo.jpg",  

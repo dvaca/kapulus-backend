@@ -927,6 +927,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 35){
+		usuario = 'foros@semana.com';
+		clave = 'foros';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1380,6 +1384,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 35){
+      adjuntos = [
+        {
+          path:"./resources/SostenibilidadHeader.jpg",  
+          filename:"SostenibilidadHeader.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          path:"./resources/SostenibilidadFooter.jpg",  
+          filename:"SostenibilidadFooter.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1517,6 +1541,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 34){
 		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 35){
+		correoEnvia = 'Semana Sostenible <eventos@semana.com>';
 	}
 	
     let mailOptions = {

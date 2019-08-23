@@ -919,9 +919,11 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 33){
 		//usuario = 'contacto@kapulusinternational.com';
-		usuario = 'comunicaciones@congresodeetica.com.co';
+		//usuario = 'comunicaciones@congresodeetica.com.co';
+		usuario = 'congresoetica@kapulusinternational.com';
 		//clave = '1*Kapu*2';
-		clave = 'Congreso2019*';
+		//clave = 'Congreso2019*';
+		clave = 'congreso123';
 	}
 	if(req.params.idevento == 34){
 		usuario = 'foros@semana.com';
@@ -935,18 +937,18 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
 		TRANSPORT = {
-		  //service: 'Gmail', 
-		  host: 'mail.congresodeetica.com.co',
-		  port: 26,
-		  secure: false,
+		  service: 'Gmail', 
+		  //host: 'mail.congresodeetica.com.co',
+		  //port: 26,
+		  //secure: false,
 		  auth: { 
 		  //user: 'contacto@kapulusinternational.com',
 		  user: usuario,
 			//pass: 'kamiad2018' }
-			pass: clave },
+			pass: clave }/*,
 		tls: {
 			rejectUnauthorized: false
-		    }
+		    }*/
 		};
 	}else{
 		TRANSPORT = {
@@ -1537,7 +1539,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 33){
 		//correoEnvia = 'Congreso de Ética profesional <contacto@kapulusinternational.com>';
-		correoEnvia = 'Congreso de Ética profesional <comunicaciones@congresodeetica.com.co>';
+		//correoEnvia = 'Congreso de Ética profesional <comunicaciones@congresodeetica.com.co>';
+		correoEnvia = 'Congreso de Ética profesional <congresoetica@kapulusinternational.com>';
 	}
 	if(req.params.idevento == 34){
 		correoEnvia = 'foros@semana.com';

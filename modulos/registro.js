@@ -1565,8 +1565,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'foros@semana.com';
 	}
 	if(req.params.idevento == 35){
-		//correoEnvia = 'Semana Sostenible <eventos@semana.com>';
-		correoEnvia = 'Semana Sostenible <foros@semana.com>';
+		correoEnvia = 'Semana Sostenible <eventos@semana.com>';
+		//correoEnvia = 'Semana Sostenible <foros@semana.com>';
 	}
 	if(req.params.idevento == 36){
 		correoEnvia = 'fiestafeoracle@feoracle.com.co';		

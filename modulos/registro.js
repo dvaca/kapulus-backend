@@ -933,6 +933,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'foros';
 	}
+	if(req.params.idevento == 36){
+		usuario = 'fiestafeoracle@feoracle.com.co';
+		clave = ' oracle2019';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1406,6 +1410,21 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 36){
+      adjuntos = [
+        {
+          path:"./resources/LogoOracle.png",  
+          filename:"LogoOracle.png",  
+          cid: "confirmacionheader"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1548,6 +1567,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 35){
 		//correoEnvia = 'Semana Sostenible <eventos@semana.com>';
 		correoEnvia = 'Semana Sostenible <foros@semana.com>';
+	}
+	if(req.params.idevento == 36){
+		correoEnvia = 'fiestafeoracle@feoracle.com.co';		
 	}
 	
     let mailOptions = {

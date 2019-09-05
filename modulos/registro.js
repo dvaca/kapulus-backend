@@ -938,8 +938,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = ' oracle2019';
 	}
 	if(req.params.idevento == 39){
-		usuario = 'fiestafeoracle@feoracle.com.co';
-		clave = ' oracle2019';
+		usuario = 'invitacioneventos@feoracle.com.co';
+		clave = 'FELIPESILVA';
 	}
 	
 	TRANSPORT = {};
@@ -1591,7 +1591,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'fiestafeoracle@feoracle.com.co';		
 	}
 	if(req.params.idevento == 39){
-		correoEnvia = 'fiestafeoracle@feoracle.com.co';		
+		correoEnvia = 'invitacioneventos@feoracle.com.co';		
 	}
 	
     let mailOptions = {

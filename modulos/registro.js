@@ -1457,6 +1457,11 @@ app.get('/asistente/:idevento', (req, res, next) => {
           filename:"QRPlaneacionPolicia1.jpg",  
           cid: "confirmacionheader"
         },
+		{
+          path:"./resources/QRPlaneacionPolicia2.jpg",  
+          filename:"QRPlaneacionPolicia2.jpg",  
+          cid: "confirmacionfooter"
+        },
         {
           filename: "QR.png",
           content: imagenQR,

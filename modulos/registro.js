@@ -942,8 +942,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'Eventos2019';
 	}
 	if(req.params.idevento == 40){
-		usuario = 'contacto@kapulusinternational.com';
-		clave = '1*Kapu*2';
+		//usuario = 'contacto@kapulusinternational.com';
+		//clave = '1*Kapu*2';
+		usuario = 'foros@semana.com';
+		clave = 'foros';
 	}
 	
 	TRANSPORT = {};
@@ -1613,7 +1615,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'invitacioneventos@feoracle.com.co';		
 	}
 	if(req.params.idevento == 40){
-		correoEnvia = 'XVII Encuentro de Planeación | Policía Nacional <contacto@kapulusinternational.com>';
+		correoEnvia = 'XVII Encuentro de Planeación | Policía Nacional <eventos@semana.com>';
 	}
 	
     let mailOptions = {

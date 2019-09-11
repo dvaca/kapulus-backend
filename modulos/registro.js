@@ -941,6 +941,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'invitacioneventos@feoracle.com.co';
 		clave = 'Eventos2019';
 	}
+	if(req.params.idevento == 40){
+		usuario = 'contacto@kapulusinternational.com';
+		clave = '1*Kapu*2';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1444,6 +1448,21 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 40){
+      adjuntos = [
+        {
+          path:"./resources/QRPlaneacionPolicia1.jpg",  
+          filename:"QRPlaneacionPolicia1.jpg",  
+          cid: "confirmacionheader"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1592,6 +1611,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 39){
 		correoEnvia = 'invitacioneventos@feoracle.com.co';		
+	}
+	if(req.params.idevento == 40){
+		correoEnvia = 'XVII Encuentro de Planeación | Policía Nacional <contacto@kapulusinternational.com>';
 	}
 	
     let mailOptions = {

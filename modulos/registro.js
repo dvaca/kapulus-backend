@@ -944,8 +944,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 40){
 		//usuario = 'contacto@kapulusinternational.com';
 		//clave = '1*Kapu*2';
-		usuario = 'foros@semana.com';
-		clave = 'foros';
+		//usuario = 'foros@semana.com';
+		//clave = 'foros';
+		usuario = 'evento@kapulusinternational.com';
+		clave = 'eventosKapu';
 	}
 	
 	TRANSPORT = {};
@@ -1629,7 +1631,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'invitacioneventos@feoracle.com.co';		
 	}
 	if(req.params.idevento == 40){
-		correoEnvia = 'XVII Encuentro de Planeación | Policía Nacional <eventos@semana.com>';
+		correoEnvia = 'XVII Encuentro de Planeación | Policía Nacional <eventos@kapulusinternational.com>';
 	}
 	
     let mailOptions = {

@@ -947,6 +947,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		//usuario = 'foros@semana.com';
 		//clave = 'foros';
 	}
+	if(req.params.idevento == 41){
+		usuario = 'foros@semana.com';
+		clave = 'foros';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1470,6 +1474,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 41){
+      adjuntos = [
+        {
+          path:"./resources/QR_Cannabis1.png",  
+          filename:"QR_Cannabis1.png",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QRPlaneacionPolicia2.jpg",  
+          filename:"QR_Cannabis2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1630,6 +1654,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 40){
 		correoEnvia = 'XVII Encuentro de Planeación | Policía Nacional <contacto@kapulusinternational.com>';
+	}
+	if(req.params.idevento == 41){
+		correoEnvia = 'foros@semana.com';
 	}
 	
     let mailOptions = {

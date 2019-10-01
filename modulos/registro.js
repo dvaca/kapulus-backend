@@ -948,8 +948,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		//clave = 'foros';
 	}
 	if(req.params.idevento == 41){
-		usuario = 'foros@semana.com';
-		clave = 'foros';
+		usuario = 'contacto@kapulusinternational.com';
+		clave = '1*Kapu*2';
+		//usuario = 'foros@semana.com';
+		//clave = 'foros';
 	}
 	
 	TRANSPORT = {};
@@ -1656,7 +1658,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'XVII Encuentro de Planeación | Policía Nacional <contacto@kapulusinternational.com>';
 	}
 	if(req.params.idevento == 41){
-		correoEnvia = 'foros@semana.com';
+		//correoEnvia = 'foros@semana.com';
+		correoEnvia = 'Bienvenido al evento <contacto@kapulusinternational.com>';
 	}
 	
     let mailOptions = {

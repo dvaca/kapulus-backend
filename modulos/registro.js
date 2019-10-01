@@ -1484,7 +1484,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
           cid: "confirmacionheader"
         },
 		{
-          path:"./resources/QRPlaneacionPolicia2.jpg",  
+          path:"./resources/QR_Cannabis2.jpg",  
           filename:"QR_Cannabis2.jpg",  
           cid: "confirmacionfooter"
         },
@@ -1659,7 +1659,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 41){
 		//correoEnvia = 'foros@semana.com';
-		correoEnvia = 'Bienvenido al evento <contacto@kapulusinternational.com>';
+		correoEnvia = 'Foros Semana <contacto@kapulusinternational.com>';
 	}
 	
     let mailOptions = {

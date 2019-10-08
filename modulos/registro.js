@@ -953,6 +953,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 42){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1578,6 +1582,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 42){
+      adjuntos = [
+        {
+          path:"./resources/InvitacionAntinarcoticos.jpg",  
+          filename:"InvitacionAntinarcoticos.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -1660,6 +1673,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 41){
 		correoEnvia = 'foros@semana.com';
 		//correoEnvia = 'Foros Semana <contacto@kapulusinternational.com>';
+	}
+	if(req.params.idevento == 42){
+		correoEnvia = 'foros@semana.com';
 	}
 	
     let mailOptions = {

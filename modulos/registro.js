@@ -957,6 +957,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 43){
+		usuario = 'qlik.analyticsday@gmail.com';
+		clave = 'qlik2019';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1500,6 +1504,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 43){
+      adjuntos = [
+        {
+          path:"./resources/headerQRQlik.png",  
+          filename:"headerQRQlik.png",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/footerQRQlik.png",  
+          filename:"footerQRQlik.png",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1676,6 +1700,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 42){
 		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 43){
+		correoEnvia = 'Qlik Analytics Day <qlik.analyticsday@gmail.com>';
 	}
 	
     let mailOptions = {

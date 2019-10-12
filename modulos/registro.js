@@ -961,6 +961,14 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'qlik.analyticsday@gmail.com';
 		clave = 'qlik2019';
 	}
+	if(req.params.idevento == 44){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
+	if(req.params.idevento == 45){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1615,6 +1623,24 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 44){
+      adjuntos = [
+        {
+          path:"./resources/invitacionSeguridadInteligente.png",  
+          filename:"invitacionSeguridadInteligente.png",  
+          cid: "invitacion"
+        }
+      ]
+	  }
+	  if(req.params.idevento == 45){
+      adjuntos = [
+        {
+          path:"./resources/invitacionNoRepeticion.png",  
+          filename:"invitacionNoRepeticion.png",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -1703,6 +1729,12 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 43){
 		correoEnvia = 'Qlik Analytics Day <qlik.analyticsday@gmail.com>';
+	}
+	if(req.params.idevento == 44){
+		correoEnvia = 'foros@semana.com';
+	}
+	if(req.params.idevento == 45){
+		correoEnvia = 'foros@semana.com';
 	}
 	
     let mailOptions = {

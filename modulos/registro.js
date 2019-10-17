@@ -1536,6 +1536,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 45){
+      adjuntos = [
+        {
+          path:"./resources/QR_probogota_header.png",  
+          filename:"QR_probogota_header.png",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QR_probogota_footer.png",  
+          filename:"QR_probogota_footer.png",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
 	  if(req.params.idevento == 46){
       adjuntos = [
         {

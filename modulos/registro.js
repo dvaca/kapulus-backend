@@ -1536,7 +1536,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
-	  if(req.params.idevento == 45){
+	  if(req.params.idevento == 44){
       adjuntos = [
         {
           path:"./resources/QR_probogota_header.png",  

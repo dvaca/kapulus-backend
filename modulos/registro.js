@@ -973,6 +973,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 47){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1685,6 +1689,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 47){
+      adjuntos = [
+        {
+          path:"./resources/invitacionEduAmbiental.jpg",  
+          filename:"invitacionEduAmbiental.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -1781,6 +1794,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'foros@semana.com';
 	}
 	if(req.params.idevento == 46){
+		correoEnvia = 'Foros Semana <foros@semana.com>';
+	}
+	if(req.params.idevento == 47){
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	

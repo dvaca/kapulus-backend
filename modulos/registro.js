@@ -1580,6 +1580,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 47){
+      adjuntos = [
+        {
+          path:"./resources/QR_corpochivor_header.png",  
+          filename:"QR_corpochivor_header.png",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QR_corpochivor_footer.png",  
+          filename:"QR_corpochivor_footer.png",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [

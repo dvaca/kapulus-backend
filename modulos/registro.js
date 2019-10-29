@@ -977,6 +977,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 48){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1600,6 +1604,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 48){
+      adjuntos = [
+        {
+          path:"./resources/QRRural1.jpg",  
+          filename:"QRRural1.jpg",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QRRural2.jpg",  
+          filename:"QRRural2.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1818,6 +1842,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 47){
 		correoEnvia = 'Foros Semana <foros@semana.com>';
+	}
+	if(req.params.idevento == 48){
+		correoEnvia = 'Gran Cumbre Colombia Rural <eventos@semana.com>';
 	}
 	
     let mailOptions = {

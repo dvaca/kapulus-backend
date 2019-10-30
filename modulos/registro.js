@@ -978,10 +978,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'convocatoriapacaweci';
 	}
 	if(req.params.idevento == 48){
-		//usuario = 'foros@semana.com';
-		//clave = 'convocatoriapacaweci';
-		usuario = 'semanarural@semana.com';
-		clave = 'SRural-12*';
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+		//usuario = 'semanarural@semana.com';
+		//clave = 'SRural-12*';
 	}
 	
 	TRANSPORT = {};
@@ -1846,8 +1846,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	if(req.params.idevento == 48){
-		//correoEnvia = 'Gran Cumbre Colombia Rural <eventos@semana.com>';
-		correoEnvia = 'Gran Cumbre Colombia Rural <semanarural@semana.com>';
+		correoEnvia = 'Gran Cumbre Colombia Rural <eventos@semana.com>';
+		//correoEnvia = 'Gran Cumbre Colombia Rural <semanarural@semana.com>';
 	}
 	
     let mailOptions = {

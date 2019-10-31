@@ -983,6 +983,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'semanarural@semana.com';
 		clave = 'SRural-12*';
 	}
+	if(req.params.idevento == 49){
+		usuario = 'arkadia@10music.com';
+		clave = 'arkadia10 ';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1744,6 +1748,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 49){
+      adjuntos = [
+        {
+          path:"./resources/invitacionArkadia.jpeg",  
+          filename:"invitacionArkadia.jpeg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -1848,6 +1861,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 48){
 		//correoEnvia = 'Gran Cumbre Colombia Rural <eventos@semana.com>';
 		correoEnvia = 'Gran Cumbre Colombia Rural <semanarural@semana.com>';
+	}
+	if(req.params.idevento == 49){
+		correoEnvia = 'Inauguración Arkadia Centro Comercial <arkadia@10music.com>';
 	}
 	
     let mailOptions = {

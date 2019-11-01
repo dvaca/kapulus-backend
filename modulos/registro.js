@@ -1754,6 +1754,11 @@ app.get('/asistente/:idevento', (req, res, next) => {
           path:"./resources/invitacionArkadia.jpeg",  
           filename:"invitacionArkadia.jpeg",  
           cid: "invitacion"
+        },
+		{
+          path:"./resources/invitacionArkadia2.jpeg",  
+          filename:"invitacionArkadia2.jpeg",  
+          cid: "invitacion2"
         }
       ]
 	  }

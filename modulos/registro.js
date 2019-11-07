@@ -1774,6 +1774,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	  }
 	  if(req.params.idevento == 49){
       adjuntos = [
+	  /*
         {
           path:"./resources/invitacionArkadia.jpeg",  
           filename:"invitacionArkadia.jpeg",  
@@ -1783,6 +1784,12 @@ app.get('/asistente/:idevento', (req, res, next) => {
           path:"./resources/invitacionArkadia2.jpeg",  
           filename:"invitacionArkadia2.jpeg",  
           cid: "invitacion2"
+        }
+		*/
+		{
+          path:"./resources/invitacionArkadia3.jpg",  
+          filename:"invitacionArkadia3.jpg",  
+          cid: "invitacion"
         }
       ]
 	  }

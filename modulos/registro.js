@@ -987,6 +987,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'arkadia@10music.com';
 		clave = 'arkadia10 ';
 	}
+	if(req.params.idevento == 50){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1630,6 +1634,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 50){
+      adjuntos = [
+        {
+          path:"./resources/QR_diabetes_header.png",  
+          filename:"QR_diabetes_header.png",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QR_diabetes_footer.png",  
+          filename:"QR_diabetes_footer.png",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1869,6 +1893,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 49){
 		correoEnvia = 'Inauguración Arkadia Centro Comercial <arkadia@10music.com>';
+	}
+	if(req.params.idevento == 50){
+		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	
     let mailOptions = {

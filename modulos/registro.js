@@ -7,37 +7,10 @@ var nodemailer = require('nodemailer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const Dymo = require('dymojs');//,
-const PORT = process.env.PORT || 4000;
-       //dymo = new Dymo();
+var index = require('../src/index');
+var app = index.app;
+var db = index.db;
 
-var corsOptions = {
-  //origin: 'http://localhost:4200',
-  //origin: 'http://169.254.168.35:4200', //PEER TO PEER
-  //origin: 'http://192.168.0.100:4200', // CAPULUS
-  //origin: 'http://192.168.0.6:4200', // LOCAL
-  //origin: 'http://192.168.0.102:4200', // ADRIAN
-  //origin: 'https://192.168.0.4:4200', // LOCAL SSL
-  origin: 'https://kapulus.herokuapp.com', // INTERNET
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-};
-
-var labelXml;
-
-  app.use(bodyParser.json()); // for parsing application/json
-  app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-  app.use(cors(corsOptions));
-
-  app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
- 
-app.listen(PORT, function () {
-    console.log('Server is running.. on Port ' + PORT);
-});
 
   //PING
   app.get('/', (req, res, next) => {

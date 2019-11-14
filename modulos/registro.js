@@ -969,8 +969,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'convocatoriapacaweci';
 	}
 	if(req.params.idevento == 55){
-		usuario = 'contacto@kapulusinternational.com';
-		clave = '1*Kapu*2';
+		usuario = 'david.vaca@kapulusinternational.com';
+		clave = 'davidkapu';
 	}
 	
 	TRANSPORT = {};

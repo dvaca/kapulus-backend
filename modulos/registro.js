@@ -968,6 +968,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 55){
+		usuario = 'contacto@kapulusinternational.com';
+		clave = '1*Kapu*2';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1642,6 +1646,21 @@ app.get('/asistente/:idevento', (req, res, next) => {
           path:"./resources/QR_ptar_footer.jpg",  
           filename:"QR_ptar_footer.jpg",  
           cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
+	  if(req.params.idevento == 55){
+      adjuntos = [
+        {
+          path:"./resources/credibancoCorreo.jpeg",  
+          filename:"credibancoCorreo.jpeg",  
+          cid: "confirmacionheader"
         },
         {
           filename: "QR.png",

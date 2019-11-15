@@ -1807,8 +1807,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	  if(req.params.idevento == 55){
       adjuntos = [
         {
-          path:"./resources/credibancoCorreo.jpeg",  
-          filename:"credibancoCorreo.jpeg",  
+          path:"./resources/Invitacioncredibanco.jpg",  
+          filename:"Invitacioncredibanco.jpg",  
           cid: "invitacion"
         }
       ]

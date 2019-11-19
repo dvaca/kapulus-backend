@@ -972,6 +972,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'david.vaca@kapulusinternational.com';
 		clave = 'davidkapu';
 	}
+	if(req.params.idevento == 56){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33){
@@ -1675,6 +1679,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 56){
+      adjuntos = [
+		{
+          path:"./resources/QR_transformación_header.jpg",  
+          filename:"QR_transformación_header.jpg",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QR_transformación_footer.jpg",  
+          filename:"QR_transformación_footer.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1939,6 +1963,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 55){
 		correoEnvia = 'Almuerzo Aliados CredibanCo 2019 <david.vaca@kapulusinternational.com>';
+	}
+	if(req.params.idevento == 56){
+		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	
     let mailOptions = {

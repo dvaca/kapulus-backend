@@ -997,7 +997,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		};
 	}else{
 		TRANSPORT = {
-		  service: 'Gmail', 
+		  //service: 'Gmail', 
+		  host: "smtp-mail.outlook.com", // hostname
+		  secureConnection: false, // TLS requires secureConnection to be false
+		  port: 587, // port for secure SMTP
+		  tls: {
+			   ciphers:'SSLv3'
+			},
 		  auth: { 
 		  user: usuario,
 			pass: clave }

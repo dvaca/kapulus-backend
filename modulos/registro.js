@@ -1670,13 +1670,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	  if(req.params.idevento == 55){
       adjuntos = [
 		{
-          path:"./resources/QRCredibancoHeader.jpg",  
-          filename:"QRCredibancoHeader.jpg",  
+          path:"./resources/QRCredibancoHeader.png",  
+          filename:"QRCredibancoHeader.png",  
           cid: "confirmacionheader"
         },
 		{
-          path:"./resources/QRCredibancoFooter.jpg",  
-          filename:"QRCredibancoFooter.jpg",  
+          path:"./resources/QRCredibancoFooter.png",  
+          filename:"QRCredibancoFooter.png",  
           cid: "confirmacionfooter"
         },
         {

@@ -969,8 +969,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'convocatoriapacaweci';
 	}
 	if(req.params.idevento == 55){
-		usuario = 'david.vaca@kapulusinternational.com';
-		clave = 'davidkapu';
+		//usuario = 'david.vaca@kapulusinternational.com';
+		//clave = 'davidkapu';
+		usuario = 'info@eventocredibanco.com';
+		clave = 'CredibanCo1*';		
 	}
 	if(req.params.idevento == 56){
 		usuario = 'foros@semana.com';
@@ -1962,7 +1964,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	if(req.params.idevento == 55){
-		correoEnvia = 'Almuerzo Aliados CredibanCo 2019 <david.vaca@kapulusinternational.com>';
+		//correoEnvia = 'Almuerzo Aliados CredibanCo 2019 <david.vaca@kapulusinternational.com>';
+		correoEnvia = 'Almuerzo Aliados CredibanCo 2019 <info@eventocredibanco.com>';
 	}
 	if(req.params.idevento == 56){
 		correoEnvia = 'Foros Semana <foros@semana.com>';

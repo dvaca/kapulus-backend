@@ -980,7 +980,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	
 	TRANSPORT = {};
-	if(req.params.idevento == 33){
+	if(req.params.idevento == 33 || req.params.idevento == 56){
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'mail.congresodeetica.com.co',

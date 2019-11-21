@@ -419,7 +419,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
               on c.id = pv.idcampo
               where c.idevento = $1 
               and c.ordenregistro is not null
-              order by c.ordenregistro`, 
+              order by c.ordenregistro, pv.valor`, 
               [req.params.idevento], (err, result) => {
         if (err) {
           return next(err);
@@ -451,7 +451,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
               on c.id = pv.idcampo
               where c.idevento = $1 
               and c.ordenregistroweb is not null
-              order by c.ordenregistroweb`, 
+              order by c.ordenregistroweb, pv.valor`, 
               [req.params.idevento], (err, result) => {
         if (err) {
           return next(err);

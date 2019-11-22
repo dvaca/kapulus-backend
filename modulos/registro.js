@@ -978,6 +978,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 57){
+		usuario = 'gestionproveedores@geb.com.co';
+		clave = 'Gep12O1zam*';
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33 || req.params.idevento == 56){
@@ -1855,6 +1859,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 57){
+      adjuntos = [
+        {
+          path:"./resources/InvitacionGEB.png",  
+          filename:"InvitacionGEB.png",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -1975,6 +1988,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 56){
 		correoEnvia = 'Foros Semana <foros@semana.com>';
+	}
+	if(req.params.idevento == 57){
+		correoEnvia = 'Cuarto Encuentro de Proveedores <gestionproveedores@geb.com.co>';
 	}
 	
     let mailOptions = {

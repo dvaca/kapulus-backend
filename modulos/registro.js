@@ -982,6 +982,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'gestionproveedores@geb.com.co';
 		clave = 'Gep12O1zam*';
 	}
+	if(req.params.idevento == 59){
+		usuario = 'info@eventocredibanco.com';
+		clave = 'CredibanCo1*';		
+	}
 	
 	TRANSPORT = {};
 	if(req.params.idevento == 33 || req.params.idevento == 56){
@@ -1711,6 +1715,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 59){
+      adjuntos = [
+		{
+          path:"./resources/QRCredibancoHeader.png",  
+          filename:"QRCredibancoHeader.png",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QRCredibancoFooter.png",  
+          filename:"QRCredibancoFooter.png",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -1868,6 +1892,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 59){
+      adjuntos = [
+        {
+          path:"./resources/Invitacioncredibanco.jpg",  
+          filename:"Invitacioncredibanco.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -1991,6 +2024,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 57){
 		correoEnvia = 'Cuarto Encuentro de Proveedores <gestionproveedores@geb.com.co>';
+	}
+	if(req.params.idevento == 59){
+		correoEnvia = 'Almuerzo Aliados CredibanCo 2019 <info@eventocredibanco.com>';
 	}
 	
     let mailOptions = {

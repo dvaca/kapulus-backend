@@ -986,9 +986,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'info@eventocredibanco.com';
 		clave = 'CredibanCo1*';		
 	}
+	if(req.params.idevento == 60){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
-	if(req.params.idevento == 33 || req.params.idevento == 56){
+	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60){
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'mail.congresodeetica.com.co',
@@ -1901,6 +1905,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 60){
+      adjuntos = [
+        {
+          path:"./resources/invitacionLideres.jpg",  
+          filename:"invitacionLideres.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -2027,6 +2040,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 59){
 		correoEnvia = 'Almuerzo Aliados CredibanCo 2019 <info@eventocredibanco.com>';
+	}
+	if(req.params.idevento == 60){
+		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	
     let mailOptions = {

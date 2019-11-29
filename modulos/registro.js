@@ -1016,6 +1016,17 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		    }*/
 		};
 	}else{
+		if(req.params.idevento == 57 ){
+			TRANSPORT = {
+			  //service: 'Gmail', 
+			  host: "smtp-mail.outlook.com", // hostname
+			  secureConnection: false, // TLS requires secureConnection to be false
+			  port: 587, // port for secure SMTP
+			  tls: {
+				   ciphers:'SSLv3'
+				}
+			};
+		}else{
 		TRANSPORT = {
 		  //service: 'Gmail', 
 		  host: "smtp-mail.outlook.com", // hostname
@@ -1028,6 +1039,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		  user: usuario,
 			pass: clave }
 		};
+		}
 	}
 
     var smtpTransport = nodemailer.createTransport( TRANSPORT );

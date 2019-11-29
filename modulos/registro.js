@@ -994,9 +994,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 63){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
-	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62){
+	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63){
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'mail.congresodeetica.com.co',
@@ -1938,6 +1942,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 63){
+      adjuntos = [
+        {
+          path:"./resources/invitacionRegionCentral.png",  
+          filename:"invitacionRegionCentral.png",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -2069,6 +2082,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	if(req.params.idevento == 62){
+		correoEnvia = 'Foros Semana <foros@semana.com>';
+	}
+	if(req.params.idevento == 63){
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	

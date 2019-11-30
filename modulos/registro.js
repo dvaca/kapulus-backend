@@ -998,9 +998,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 64){
+		usuario = 'invitacioneventos@feoracle.com.co';
+		clave = 'EVENTOSFEORACLE2019';
+	}
 	
 	TRANSPORT = {};
-	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63){
+	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64){
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'mail.congresodeetica.com.co',
@@ -1767,6 +1771,21 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 64){
+      adjuntos = [
+        {
+          path:"./resources/LogoOracle.png",  
+          filename:"LogoOracle.png",  
+          cid: "confirmacionheader"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -2086,6 +2105,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 63){
 		correoEnvia = 'Foros Semana <foros@semana.com>';
+	}
+	if(req.params.idevento == 64){
+		correoEnvia = 'Fiesta de Fin de Año 2019 <invitacioneventos@feoracle.com.co>';		
 	}
 	
     let mailOptions = {

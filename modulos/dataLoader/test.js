@@ -1,14 +1,30 @@
-sumTwentyAfterTwoSeconds(10)
+// sumTwentyAfterTwoSeconds(10)
+//   .then(result => console.log('after 2 seconds', result))
+
+// async function sumTwentyAfterTwoSeconds(value) {
+//   const remainder = afterTwoSeconds(20)
+
+//   return value + await remainder
+// }
+
+// function afterTwoSeconds(value) {
+//   return new Promise(resolve => {
+//     setTimeout(() => { resolve(value) }, 20000);
+//   });
+// }
+
+
+sumTwentyAfterTwoSeconds2(10)
   .then(result => console.log('after 2 seconds', result))
 
-async function sumTwentyAfterTwoSeconds(value) {
+ function sumTwentyAfterTwoSeconds(value) {
   const remainder = afterTwoSeconds(20)
 
-  return value + await remainder
+  return value +  remainder
 }
 
 function afterTwoSeconds(value) {
   return new Promise(resolve => {
-    setTimeout(() => { resolve(value) }, 20000);
+    setTimeout(() => { resolve(value) }, 2000);
   });
 }

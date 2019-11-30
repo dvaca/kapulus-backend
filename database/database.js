@@ -32,5 +32,8 @@ const pool = new Pool(config);
 module.exports = {
   query: (text, params, callback) => {
     return pool.query(text, params, callback)
+  },
+  queryAsync: async (text, params) => {
+    return await pool.query(text, params)
   }
 }

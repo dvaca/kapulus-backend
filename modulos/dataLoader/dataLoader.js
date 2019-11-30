@@ -60,7 +60,7 @@ function saveSettings(eventId, settings, storageId) {
         var oldSettings = {};
         var oldMergeColumn = [];
         var mergeColumns = [];
-        if (event.settings == null) {
+        if (event.settings == null || event.settings == "") {
             oldSettings = {}
         }
         else {
@@ -153,9 +153,10 @@ function extractColumns(columnsNameArray, columnNameConversor) {
  */
 var camelize = function toCamelCase(text) {
     var camel;
-    camel = text.replace(/[^\w\s]/gi, '');
+    camel = text.replace(/[^\w\s]/gi, 'X');
+    //camel = text.replace(/[^a-zA-Z0-9]/g, '');
     camel.trim();
-    camel = text.substr(0, 1).toUpperCase() + text.substr(1).toLowerCase();
+    camel = camel.substr(0, 1).toUpperCase() + camel.substr(1).toLowerCase();
     return camel;
 }
 
@@ -199,9 +200,9 @@ async function toDatabase(storageId, callback) {
                     await getData(storage, async (data, err) => {
                         try {
                             var response = await load(data, storage, event);
-                           // if(response!=undefined){
-                                callback({ Result: "Load Success" }, null);
-                           // }
+                            // if(response!=undefined){
+                            callback(response, null);
+                            // }
                             var settings = JSON.parse(event.settings);
                             settings[storageId].status = 'Datos Cargados';
                             event.settings = settings;
@@ -225,10 +226,7 @@ async function load(data, storage, event) {
         await loadFieldsEvent(storage, event);
         await loadAttendant(data, storage, event);
         result = await loadAttributeAttendant(data, storage, event);
-        while (!result.done) {
-            result.result = "load Sucess";
-            return result.result;
-        }
+        return result;
     }
     catch (e) {
         throw e;
@@ -298,11 +296,14 @@ async function loadAttendant(dataCSV, storage, event) {
       $5);`
  */
 async function loadAttributeAttendant(dataCSV, storage, event) {
-    return new Promise(resolve => {
+
         var settings = JSON.parse(event.settings);
         primaryColumn = settings.mergeColumns.filter(validColumn => validColumn.id == true);
-        dataCSV.map((data, index) => {
-            settings.mergeColumns.map(column => {
+        var loadResult={message:'',errors:0, success:0};
+        for (i = 0; i < dataCSV.length; i++) {
+            var data = dataCSV[i];
+            for (j = 0; j < settings.mergeColumns.length; j++) {
+                column = settings.mergeColumns[j];
                 var params = [];
                 params.push(storage.event_id);
                 params.push(data[primaryColumn[0].name]);
@@ -310,13 +311,21 @@ async function loadAttributeAttendant(dataCSV, storage, event) {
                 params.push(column.name);
                 params.push(data[column.name]);
                 params.push(storage.storage_id)
-                applicationData.insertAttributeAttendant(params, (res, err) => {
-                    if (err) console.log(err);
-                });
-            });
-            resolve("sucess");
-        });
-    });
+                try {
+                    var result = await applicationData.insertAttributeAttendant(params);
+                    loadResult.success++;
+                    console.log(result);
+                }
+                catch(e){
+                    console.log(e);
+                    loadResult.message = "Los datos subieron con errores."+e;
+                    loadResult.errors++
+                    break;
+                    
+                }
+            };
+        };
+        return loadResult;
 
 }
 
@@ -393,16 +402,15 @@ function insertEventFields(params) {
 /**Delete Data Loaded */
 async function deleteDataLoaded(storage, callback) {
     var status = { result: [] };
-    //var callback = function callback(res, err) { };
+    var callbackResume = function callback(res, err) { };
     var storageId = storage.storageId.storage_id;
     var event = storage.storageId.event_id;
-    await applicationData.deleteAttributeAttendantByStorage([storageId], callback);
-    await applicationData.deleteAttendantByStorage([storageId], callback);
-    await applicationData.deleteAllowedValuesByStorage([storageId], callback);
-    await applicationData.deleteEventFieldsByStorage([storageId], callback);
-    
+    await applicationData.deleteAttributeAttendantByStorage([storageId], callbackResume);
+    await applicationData.deleteAttendantByStorage([storageId], callbackResume);
+    await applicationData.deleteAllowedValuesByStorage([storageId], callbackResume);
+    await applicationData.deleteEventFieldsByStorage([storageId], callbackResume);
+
     status.result.push("EventFields Table Deleted");
-    callback(status, null);
     var event;
     applicationData.getEvent([event], (res, err) => {
 
@@ -410,13 +418,26 @@ async function deleteDataLoaded(storage, callback) {
         settings[storageId].status = 'Procesado';
         res.settings = settings;
         applicationData.updateEvent(res, async (result, err) => {
+            callback(status, null);
         });
     });
 };
 
 
+function insertStorage(params, callback) {
+
+    applicationData.insertStorage(params, (res, err) => {
+        if (err) {
+            callback(null, err);
+        }
+        //processFile(params[2],params[0],params[4],constant.PROPERTIES.characterSeparator, callback);
+        callback(res, null);
+    });
+}
+
 
 exports.processFile = processFile;
 exports.toDatabase = toDatabase;
 exports.deleteDataLoaded = deleteDataLoaded;
+exports.insertStorage = insertStorage;
 

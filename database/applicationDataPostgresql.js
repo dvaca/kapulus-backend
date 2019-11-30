@@ -5,7 +5,7 @@
 var db = require('./database');
 
 /** Return the events*/
-const GET_EVENTS_QUERY = 'SELECT * FROM evento';
+const GET_EVENTS_QUERY = 'SELECT * FROM evento ORDER BY id DESC';
 function getEvents(params, callback) {
     callDatabase(GET_EVENTS_QUERY, params, callback, processMultipleResult);
 };
@@ -156,8 +156,8 @@ const INSERT_ATTRIBUTE_ATTENDANT = `INSERT INTO atributosasistente (idasistente,
  VALUES((SELECT id FROM asistente WHERE idevento = $1 AND identificacion = $2), 
  (SELECT id FROM camposevento WHERE idevento = $3 and nombre = $4),NULL,
   $5, $6);`
-function insertAttributeAttendant(params, callback){
-    callDatabase(INSERT_ATTRIBUTE_ATTENDANT, params, callback, processSingleResult);
+async function insertAttributeAttendant(params) {
+    await callDatabaseAsync(INSERT_ATTRIBUTE_ATTENDANT, params, processSingleResult);
 }
 
 /**
@@ -233,7 +233,7 @@ function callDatabase(query, params, callback, processResult) {
     var parameters = Object.keys(params).map(key => params[key]);
     db.query(query, parameters, (err, result) => {
         if (err) {
-            console.log(err.message + 'Query:=> ' + query.substring(0,200) + 'Params:=> ' + params);
+            console.log(err.message + 'Query:=> ' + query.substring(0, 200) + 'Params:=> ' + params);
             return callback(null, err.message);
         }
         return callback(processResult(result), err);
@@ -241,11 +241,31 @@ function callDatabase(query, params, callback, processResult) {
 }
 
 /**
+ * Generic Caller to Database
+ * @param {*} query 
+ * @param {*} params 
+ * @param {*} callback 
+ * @param {*} processResult 
+ */
+async function callDatabaseAsync(query, params, processResult) {
+    var parameters = Object.keys(params).map(key => params[key]);
+    try {
+        var result = await db.queryAsync(query, parameters);
+        console.log(result);
+        return processResult(result);
+    }
+    catch (e) {
+        return Promise.reject(e);
+    }   
+
+}
+
+/**
  * Postprocess for single result
  * @param {*} result 
  */
 function processSingleResult(result) {
-    if (result.command === "UPDATE") {
+    if (result.command === "UPDATE" || result.command === "DELETE") {
         return { "response": 200 };
     }
     return result.rows[0];

@@ -8,6 +8,7 @@
  */
 var index = require('../../src/index');
 var app = index.app;
+var router = index.router;
 var constant = require('./dataLoaderProperties');
 var dataLoader = require('./dataLoader');
 const path = require("path");
@@ -16,6 +17,7 @@ var express = require('express');
 const multer = require("multer");
 var applicationData = require('../../database/applicationDataFacade');
 const storagePath = 'I:/Projects/kapulus/file-storage/data';
+
 /**
  * Multer Storage configuration
  */
@@ -27,7 +29,7 @@ var storage = multer.diskStorage({
         var originalname = file.originalname;
         var extension = originalname.split(".");
         filename = originalname + Date.now() + '.' + extension[extension.length - 1];
-        filename =  uuidv4()+ '.' + extension[extension.length - 1];
+        filename = uuidv4() + '.' + extension[extension.length - 1];
         cb(null, filename);
     }
 });
@@ -86,9 +88,9 @@ app.post('/uploadCSV', uploadCSV.single('file'), async (req, res) => {
             //send response
             //update storage database
             //storage_id, original_name, event_id, create_date
-            var params = [filename.split('.')[0], req.file.originalname, eventId, new Date(),filename.split('.')[1]];
+            var params = [filename.split('.')[0], req.file.originalname, eventId, new Date(), filename.split('.')[1]];
 
-            applicationData.insertStorage(params, (dataRes, err) => {
+            dataLoader.insertStorage(params, (result, err) => {
                 if (err) {
                     throw err;
                 }
@@ -102,6 +104,7 @@ app.post('/uploadCSV', uploadCSV.single('file'), async (req, res) => {
                     }
                 });
             });
+
         }
 
     } catch (err) {
@@ -116,13 +119,13 @@ app.post('/v2/processFile', (req, res) => {
     var extension = req.body.extension;
     var eventId = req.body.eventId;
     var storageId = req.body.storageId;
-     dataLoader.processFile(eventId, storageId, extension, ';', (result, err)=>{
-            if(err){
-                return res.send(err);
-            }
-            else{
-                return res.send(result);
-            }
+    dataLoader.processFile(eventId, storageId, extension, ';', (result, err) => {
+        if (err) {
+            return res.send(err);
+        }
+        else {
+            return res.send(result);
+        }
     });
 });
 
@@ -159,10 +162,10 @@ function createDefaultZone(idEvent) {
 app.put('/v2/events/:event', (req, res, next) => {
     applicationData.updateEvent(req.body, (result, error) => {
         console.log(req.params);
-        if(error){
+        if (error) {
             return res.send(error);
         }
-        else{
+        else {
             return res.send(result);
         }
     });
@@ -171,15 +174,19 @@ app.put('/v2/events/:event', (req, res, next) => {
 /**
  * Save the .CVS data to database
  */
-app.post('/v2/toDatabase', async (req, res, next) => {
+router.post('/v2/toDatabase', async (req, res, next) => {
     var response = {};
     var storage_id = req.body.storageId;
     await dataLoader.toDatabase(storage_id, async (result, error) => {
         if (error) {
-            return next(error);
+            res.status(500).send({status:500, message: error.Error.message, type:'internal'});
+        } else if (!result) {
+            return res.status(404).json();
         }
-        response = result;
-        return res.send(response);
+        else {
+            console.log(result);
+            return res.status(200).json(result);
+        }
     });
 });
 
@@ -191,11 +198,14 @@ app.post('/v2/deleteDataLoaded', (req, res, next) => {
     var storage = req.body;
     dataLoader.deleteDataLoaded(storage, (result, error) => {
         if (error) {
-            return next(error);
+            res.status(500).json(error);
+        } else if (!result) {
+            res.status(404).json();
         }
-        response = result;
-        console.log(response);
-        return res.send(response);
+        else {
+            console.log(result);
+            return res.status(200).json(result);
+        }
     });
 });
 

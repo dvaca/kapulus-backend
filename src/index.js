@@ -9,6 +9,9 @@ const bodyParser = require('body-parser');
 
 const Dymo = require('dymojs');//,
 const PORT = process.env.PORT || 4000;
+const Router = require('express-promise-router');
+const router = new Router();
+
        //dymo = new Dymo();
 
 var corsOptions = {
@@ -52,6 +55,9 @@ app.listen(PORT, function () {
       res.send(result.rows[0]);
     })
   });
+
+  app.use(router);
   
   exports.app = app;
   exports.db = db;
+  exports.router = router;

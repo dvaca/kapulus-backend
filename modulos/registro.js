@@ -999,7 +999,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'convocatoriapacaweci';
 	}
 	if(req.params.idevento == 64){
-		usuario = 'invitacioneventos@feoracle.com.co';
+		usuario = 'eventos1@feoracle.com.co';
 		clave = 'Felipe2019';
 	}
 	
@@ -2107,7 +2107,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	if(req.params.idevento == 64){
-		correoEnvia = 'Fiesta de Fin de Año 2019 <invitacioneventos@feoracle.com.co>';		
+		correoEnvia = 'Fiesta de Fin de Año 2019 <eventos1@feoracle.com.co>';		
 	}
 	
     let mailOptions = {

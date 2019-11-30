@@ -1000,7 +1000,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 64){
 		usuario = 'invitacioneventos@feoracle.com.co';
-		clave = 'EVENTOSFEORACLE2019';
+		clave = 'Felipe2019';
 	}
 	
 	TRANSPORT = {};

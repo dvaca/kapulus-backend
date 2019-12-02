@@ -18,8 +18,8 @@ function getEvent(params, callback) {
 /**
  * Insert one event
  */
-const INSERT_EVENT_QUERY = `INSERT INTO evento(id, idcliente, nombre, fecha, logo, descripcion)
-    VALUES (nextval('evento_id_seq'), 1, $1, $3, '', $2) RETURNING id;`;
+const INSERT_EVENT_QUERY = `INSERT INTO evento(id, idcliente, nombre, fecha, logo, descripcion, status)
+    VALUES (nextval('evento_id_seq'), 1, $1, $3, '', $2, $4) RETURNING id;`;
 function insertEvent(params, callback) {
     callDatabase(INSERT_EVENT_QUERY, params, callback, processSingleResult);
 };
@@ -56,10 +56,10 @@ function deleteZoneByEvent(params, callback) {
  */
 
 const UPDATE_EVENT = `UPDATE evento SET idcliente=$2, nombre=$3, fecha=$4, logo=$5, descripcion=$6, 
-settings=$7 WHERE id=$1`;
+settings=$7, status=$8 WHERE id=$1`;
 function updateEvent(params, callback) {
     var parameters = [params.id, parseInt(params.idcliente), params.nombre, params.fecha,
-    params.logo, params.descripcion, params.settings];
+    params.logo, params.descripcion, params.settings, params.status];
     callDatabase(UPDATE_EVENT, parameters, callback, processSingleResult);
 };
 

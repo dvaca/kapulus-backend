@@ -85,7 +85,8 @@ function saveSettings(eventId, settings, storageId) {
                         mergeColumn.statistics = false;
                         mergeColumn.name = validColumn.name;
                         mergeColumn.description = validColumn.description;
-                        mergeColumn.allowedValues = [{ "name": '' }];
+                        mergeColumn.allowedValues = [];
+                        //mergeColumn.allowedValues = [{ "name": '' }];
                     }
                     //Duplicate control
                     existColumn = mergeColumns.filter(existColumn => existColumn.name == mergeColumn.name);
@@ -313,11 +314,12 @@ async function loadAttributeAttendant(dataCSV, storage, event) {
                 params.push(storage.storage_id)
                 try {
                     var result = await applicationData.insertAttributeAttendant(params);
+                    if(loadResult.errors==0){
+                        loadResult.message="Datos Subidos Correctamente.";
+                    }
                     loadResult.success++;
-                    console.log(result);
                 }
                 catch(e){
-                    console.log(e);
                     loadResult.message = "Los datos subieron con errores."+e;
                     loadResult.errors++
                     break;
@@ -348,7 +350,12 @@ async function loadFieldsEvent(storage, event) {
         params.push(parseInt(storage.event_id)); //idevento
         params.push(column.name); //nombre
         params.push(1); //tipodato
-        params.push(1); //tipocampo
+        if(column.allowedValues.length==0){
+            params.push(1); //tipocampo
+        }
+        else{
+            params.push(2); //tipocampo con valores opcionales
+        }
         params.push(true); //obligatorio
         params.push(100); //longitud
         params.push(column.filter); //filtrar

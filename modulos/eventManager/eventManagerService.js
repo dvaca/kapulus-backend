@@ -39,7 +39,7 @@ app.get('/v2/events/:idevento', (req, res, next) => {
     });
 });
 /**
- * Retun all events
+ * Create events
  */
 app.post('/v2/events', (req, res, next) => {
     var response = {};
@@ -52,6 +52,22 @@ app.post('/v2/events', (req, res, next) => {
         if (response != undefined) {
             createDefaultZone(response);
         }
+        return res.send(response);
+    });
+});
+
+/**
+ * update events
+ */
+app.put('/v2/events', (req, res, next) => {
+    var response = {};
+    applicationData.updateEvent(req.body, (events, error) => {
+        console.log(req.params);
+        if (error) {
+            return next(error);
+        }
+        response = events;
+        
         return res.send(response);
     });
 });
@@ -73,11 +89,11 @@ function createDefaultZone(idEvent) {
     });
 }
 
-async function deleteDefaultZone(params, callback){
+async function deleteDefaultZone(params){
 
     applicationData.deleteZoneByEvent(params, (res,err) =>{
         if (err) {
-            return next(err);
+            return err;
         }
         else{
             return res;

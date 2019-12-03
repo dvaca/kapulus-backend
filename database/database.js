@@ -35,5 +35,5 @@ module.exports = {
   },
   queryAsync: async (text, params) => {
     return await pool.query(text, params)
-  }
+  }  
 }

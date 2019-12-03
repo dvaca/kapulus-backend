@@ -115,10 +115,18 @@ function deleteStorage(params, callback) {
 /**
  * Insert event attendand
  */
-const INSERT_ATTENDANT = `INSERT INTO asistente(
-    id, tipoid, identificacion, idevento, registrado, preinscrito, actualizado, id_ticket, 
-    autorizacion_pago, codigocontrolacceso, storage_id)
-	VALUES (nextval('asistente_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`
+// const INSERT_ATTENDANT = `INSERT INTO asistente(
+//     id, tipoid, identificacion, idevento, registrado, preinscrito, actualizado, id_ticket, 
+//     autorizacion_pago, codigocontrolacceso, storage_id)
+//     VALUES (nextval('asistente_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`
+const INSERT_ATTENDANT= `WITH upsert AS(UPDATE asistente SET registrado=$4, preinscrito=$5, actualizado=$6,
+    id_ticket=$7,autorizacion_pago=$8, codigocontrolacceso=$9, storage_id=$10
+     WHERE tipoid=$1 AND identificacion=$2 AND idevento=$3 RETURNING *)
+INSERT INTO asistente(
+id, tipoid, identificacion, idevento, registrado, preinscrito, actualizado, id_ticket, 
+autorizacion_pago, codigocontrolacceso, storage_id)
+SELECT nextval('asistente_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10
+WHERE NOT EXISTS (SELECT * FROM upsert) RETURNING id;`    
 function insertAttendant(params, callback) {
     callDatabase(INSERT_ATTENDANT, params, callback, processSingleResult);
 }
@@ -130,13 +138,28 @@ function deleteAttendantByStorage(params, callback) {
 }
 
 /** Insert dinamic fields */
-const INSERT_EVENT_FIELDS = `INSERT INTO camposevento(
-    id, idevento, nombre, tipodato, tipocampo, obligatorio, longitud, filtrar, estadisticas, 
-    ordenimpresion, ordenregistro, ordenregistroweb, ordencargue, xescarapela, yescarapela, 
-    tamanoescarapela, negritaescarapela, xcertificado, ycertificado, tamanocertificado, negritacertificado,
-    storage_id)
-    VALUES (nextval('camposevento_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12,
-     $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING id;`
+// const INSERT_EVENT_FIELDS = `INSERT INTO camposevento(
+//     id, idevento, nombre, tipodato, tipocampo, obligatorio, longitud, filtrar, estadisticas, 
+//     ordenimpresion, ordenregistro, ordenregistroweb, ordencargue, xescarapela, yescarapela, 
+//     tamanoescarapela, negritaescarapela, xcertificado, ycertificado, tamanocertificado, negritacertificado,
+//     storage_id)
+//     VALUES (nextval('camposevento_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12,
+//      $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING id;`
+
+const INSERT_EVENT_FIELDS =  `WITH upsert AS (UPDATE camposevento SET tipodato=$3, tipocampo=$4, obligatorio=$5, 
+    longitud=$6,filtrar=$7,estadisticas=$8,ordenimpresion=$9,ordenregistro=$10, ordenregistroweb=$11,
+    ordencargue=$12,xescarapela=$13, yescarapela=$14,tamanoescarapela=$15, 
+    negritaescarapela=$16,xcertificado=$17, ycertificado=$18,tamanocertificado=$19, 
+    negritacertificado=$20
+     WHERE idevento=$1 AND nombre=$2 RETURNING *)
+INSERT INTO camposevento (id, idevento, nombre, tipodato, tipocampo, obligatorio, longitud, filtrar, estadisticas, 
+ordenimpresion, ordenregistro, ordenregistroweb, ordencargue, xescarapela, yescarapela, 
+tamanoescarapela, negritaescarapela, xcertificado, ycertificado, tamanocertificado, negritacertificado,
+storage_id) 
+SELECT nextval('camposevento_id_seq'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12,
+$13, $14, $15, $16, $17, $18, $19, $20, $21 
+WHERE NOT EXISTS (SELECT * FROM upsert) RETURNING id;`
+
 function insertEventFields(params, callback) {
     callDatabase(INSERT_EVENT_FIELDS, params, callback, processSingleResult);
 }

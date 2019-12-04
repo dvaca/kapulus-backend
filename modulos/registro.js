@@ -1771,6 +1771,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 63){
+      adjuntos = [
+        {
+          path:"./resources/QR_rape_header.jpg",  
+          filename:"QR_rape_header.jpg",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QR_rape_footer.jpg",  
+          filename:"QR_rape_footer.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
 	  if(req.params.idevento == 64){
       adjuntos = [
         {

@@ -191,7 +191,7 @@ var db = index.db;
         inner join camposevento c
           on aa.idcampo = c.id
         where c.idevento = $1
-          and c.filtrar is not null
+          and c.filtrar = true
           and formatear(aa.valor, false) LIKE formatear($`+(i+1)+`, false) `;
       if(!isNaN(listaCriterios[i].substring(1,listaCriterios[i].length-1))){
         sqlQuery += ` UNION select id, 

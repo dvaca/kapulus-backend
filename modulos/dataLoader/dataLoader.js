@@ -111,6 +111,11 @@ function saveSettings(eventId, settings, storageId) {
     });
 }
 
+function getEventsAvailable(status){
+    var eventsAvailable=[];
+    //if(status==procesado)
+}
+
 
 
 function removeInvalidRows(dataArray) {

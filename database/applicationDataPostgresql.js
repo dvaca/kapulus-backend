@@ -274,9 +274,12 @@ async function callDatabaseAsync(query, params, processResult) {
     var parameters = Object.keys(params).map(key => params[key]);
     try {
         var result = await db.queryAsync(query, parameters);
-        console.log(result);
+        //console.log(result);
         return processResult(result);
     }
+
+
+    
     catch (e) {
         return Promise.reject(e);
     }   

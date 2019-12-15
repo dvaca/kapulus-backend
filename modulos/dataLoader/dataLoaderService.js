@@ -129,19 +129,25 @@ app.post('/v2/processFile', (req, res) => {
     });
 });
 
-app.post('/v2/events', (req, res, next) => {
+// app.post('/v2/events', (req, res, next) => {
+//     var response = {};
+//     applicationData.insertEvent(req.body, (events, error) => {
+//         console.log(req.params);
+//         if (error) {
+//             return next(error);
+//         }
+//         response = events;
+//         if (response != undefined) {
+//             createDefaultZone(response.id);
+//         }
+//         return res.send(response);
+//     });
+// });
+
+app.put('/v2/eventFields/:event', (req, res, next) => {
     var response = {};
-    applicationData.insertEvent(req.body, (events, error) => {
-        console.log(req.params);
-        if (error) {
-            return next(error);
-        }
-        response = events;
-        if (response != undefined) {
-            createDefaultZone(response.id);
-        }
-        return res.send(response);
-    });
+    dataLoader.loadFieldsEvent({"event_id":req.params.event}, req.body.settings);
+    return res.send(response);
 });
 
 

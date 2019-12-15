@@ -83,10 +83,10 @@ function saveSettings(eventId, settings, storageId) {
                         mergeColumn.id = false;
                         mergeColumn.filter = false;
                         mergeColumn.statistics = false;
+                        mergeColumn.required = false;
                         mergeColumn.name = validColumn.name;
                         mergeColumn.description = validColumn.description;
                         mergeColumn.allowedValues = [];
-                        //mergeColumn.allowedValues = [{ "name": '' }];
                     }
                     //Duplicate control
                     existColumn = mergeColumns.filter(existColumn => existColumn.name == mergeColumn.name);
@@ -100,10 +100,6 @@ function saveSettings(eventId, settings, storageId) {
         });
         oldSettings.mergeColumns = mergeColumns;
         oldSettings[storageId].status = 'Procesado';
-        // oldSettings.invalidColumns=[];
-        // oldSettings.validRows=0;
-        // oldSettings.totalRows=0;
-        // oldSettings.validColumns=[];
         event.settings = oldSettings;
         applicationData.updateEvent(event, (result, err) => {
             console.log('Save Settings' + result);
@@ -111,8 +107,8 @@ function saveSettings(eventId, settings, storageId) {
     });
 }
 
-function getEventsAvailable(status){
-    var eventsAvailable=[];
+function getEventsAvailable(status) {
+    var eventsAvailable = [];
     //if(status==procesado)
 }
 
@@ -139,9 +135,6 @@ function extractColumns(columnsNameArray, columnNameConversor) {
         column.index = columnIndex++;
         column.description = columnNameConversor(x);
         column.name = column.description.replace(/\s|\./g, '');
-        // column.id = false;
-        // column.filter = false;
-        // column.statistics = false;
         return column;
     });
 
@@ -180,6 +173,13 @@ function extractData(columns, dataArray, callback) {
         var currentline = dataArray[i].split(separator);
         for (var j = 0; j < columns.length; j++) {
             var index = columns[j].index;
+            dataValue = currentline[index];
+            if (dataValue != undefined) {
+                //Limit value to upload
+                if (dataValue.length > constant.PROPERTIES.maxValueSize) {
+                    davaValue = dataValue.substring(0, constant.PROPERTIES.maxValueSize);
+                }
+            }
             obj[columns[index].name] = currentline[index];
         }
         result.push(obj);
@@ -229,7 +229,8 @@ async function toDatabase(storageId, callback) {
 async function load(data, storage, event) {
     var result = {};
     try {
-        await loadFieldsEvent(storage, event);
+        var settings = JSON.parse(event.settings);
+        await loadFieldsEvent(storage, settings);
         await loadAttendant(data, storage, event);
         result = await loadAttributeAttendant(data, storage, event);
         return result;
@@ -303,36 +304,36 @@ async function loadAttendant(dataCSV, storage, event) {
  */
 async function loadAttributeAttendant(dataCSV, storage, event) {
 
-        var settings = JSON.parse(event.settings);
-        primaryColumn = settings.mergeColumns.filter(validColumn => validColumn.id == true);
-        var loadResult={message:'',errors:0, success:0};
-        for (i = 0; i < dataCSV.length; i++) {
-            var data = dataCSV[i];
-            for (j = 0; j < settings.mergeColumns.length; j++) {
-                column = settings.mergeColumns[j];
-                var params = [];
-                params.push(storage.event_id);
-                params.push(data[primaryColumn[0].name]);
-                params.push(storage.event_id);
-                params.push(column.name);
-                params.push(data[column.name]);
-                params.push(storage.storage_id)
-                try {
-                    var result = await applicationData.insertAttributeAttendant(params);
-                    if(loadResult.errors==0){
-                        loadResult.message="Datos Subidos Correctamente.";
-                    }
-                    loadResult.success++;
+    var settings = JSON.parse(event.settings);
+    primaryColumn = settings.mergeColumns.filter(validColumn => validColumn.id == true);
+    var loadResult = { message: '', errors: 0, success: 0 };
+    for (i = 0; i < dataCSV.length; i++) {
+        var data = dataCSV[i];
+        for (j = 0; j < settings.mergeColumns.length; j++) {
+            column = settings.mergeColumns[j];
+            var params = [];
+            params.push(storage.event_id);
+            params.push(data[primaryColumn[0].name]);
+            params.push(storage.event_id);
+            params.push(column.name);
+            params.push(data[column.name]);
+            params.push(storage.storage_id)
+            try {
+                var result = await applicationData.insertAttributeAttendant(params);
+                if (loadResult.errors == 0) {
+                    loadResult.message = "Datos Subidos Correctamente.";
                 }
-                catch(e){
-                    loadResult.message = "Los datos subieron con errores."+e;
-                    loadResult.errors++
-                    break;
-                    
-                }
-            };
+                loadResult.success++;
+            }
+            catch (e) {
+                loadResult.message = "Los datos subieron con errores." + e;
+                loadResult.errors++
+                break;
+
+            }
         };
-        return loadResult;
+    };
+    return loadResult;
 
 }
 
@@ -346,8 +347,8 @@ async function loadAttributeAttendant(dataCSV, storage, event) {
     tamanoescarapela, negritaescarapela, xcertificado, ycertificado, tamanocertificado, negritacertificado
  * @param {*} event 
  */
-async function loadFieldsEvent(storage, event) {
-    var settings = JSON.parse(event.settings);
+async function loadFieldsEvent(storage, settings) {
+    
 
     await settings.mergeColumns.map(async (column, index) => {
         var params = [];
@@ -355,13 +356,13 @@ async function loadFieldsEvent(storage, event) {
         params.push(parseInt(storage.event_id)); //idevento
         params.push(column.name); //nombre
         params.push(1); //tipodato
-        if(column.allowedValues.length==0){
+        if (column.allowedValues.length == 0) {
             params.push(1); //tipocampo
         }
-        else{
+        else {
             params.push(2); //tipocampo con valores opcionales
         }
-        params.push(true); //obligatorio
+        params.push(column.required); //obligatorio
         params.push(100); //longitud
         params.push(column.filter); //filtrar
         params.push(column.statistics); //estadisticas
@@ -448,8 +449,9 @@ function insertStorage(params, callback) {
 }
 
 
+
 exports.processFile = processFile;
 exports.toDatabase = toDatabase;
 exports.deleteDataLoaded = deleteDataLoaded;
 exports.insertStorage = insertStorage;
-
+exports.loadFieldsEvent = loadFieldsEvent;

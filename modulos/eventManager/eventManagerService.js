@@ -38,6 +38,7 @@ app.get('/v2/events/:idevento', (req, res, next) => {
         return res.send(response);
     });
 });
+
 /**
  * Create events
  */

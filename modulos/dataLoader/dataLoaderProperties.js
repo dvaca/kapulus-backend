@@ -11,8 +11,10 @@ const PROPERTIES =
 {
    "fileSystemPath": "I:\\Projects\\kapulus\\file-storage\\data",
    "characterSeparator": ";",
+   "maxValueSize": 150,
    "messageError": "No fue posible subir el archivo al servidor",
    "messageSuccess": "El archivo fue subido exitosamente"
+
 };
 
 

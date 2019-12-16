@@ -16,7 +16,7 @@ const router = new Router();
 
 var corsOptions = {
   //origin: 'http://localhost:4200',
-  origin: 'http://kapulus.dynu.net:4200',
+  origin: 'http://app.kapulus.com:4200',
   //origin: 'http://169.254.168.35:4200', //PEER TO PEER
   //origin: 'http://192.168.0.100:4200', // CAPULUS
   //origin: 'http://192.168.0.6:4200', // LOCAL

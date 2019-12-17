@@ -76,16 +76,16 @@ app.put('/v2/events', (req, res, next) => {
 
 function createDefaultZone(idEvent) {
     var params = [];
-    params.push(idEvent);
+    params.push(idEvent.id);
     params.push('PRINCIPAL');
     params.push(0);
     params.push(0);
     params.push(0);
     params.push(null);
 
-    applicationData.insertZone(req.body, (events, error) => {
+    applicationData.insertZone(params, (events, error) => {
         if (error) {
-            return next(error);
+            return error;
         }
     });
 }

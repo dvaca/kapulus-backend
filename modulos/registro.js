@@ -1010,9 +1010,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'somosbvc@bvc.com.co';
 		clave = 'Cultura123*';
 	}
+	if(req.params.idevento == 68){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
-	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64 || req.params.idevento == 66 || req.params.idevento == 67){
+	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64 || req.params.idevento == 66 || req.params.idevento == 67 || req.params.idevento == 68){
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'mail.congresodeetica.com.co',
@@ -1854,6 +1858,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 68){
+      adjuntos = [
+        {
+          path:"./resources/QR_bolivar_header.jpg",  
+          filename:"QR_bolivar_header.jpg",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QR_bolivar_footer.jpg",  
+          filename:"QR_bolivar_footer.jpg",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -2189,6 +2213,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 67){
 		correoEnvia = 'Future White Party <somosbvc@bvc.com.co>';
+	}
+	if(req.params.idevento == 68){
+		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	
     let mailOptions = {

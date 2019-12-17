@@ -16,7 +16,8 @@ var fs = require('fs')
 var express = require('express');
 const multer = require("multer");
 var applicationData = require('../../database/applicationDataFacade');
-const storagePath = 'I:/Projects/kapulus/file-storage/data';
+var constant = require('./dataLoaderProperties');
+const storagePath = constant.PROPERTIES.fileSystemPath;
 
 /**
  * Multer Storage configuration

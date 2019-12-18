@@ -1015,8 +1015,10 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		clave = 'convocatoriapacaweci';
 	}
 	if(req.params.idevento == 69){
-		usuario = 'at_canales_comerciales@grupovanti.com';
-		clave = 'vanti1';
+		//usuario = 'at_canales_comerciales@grupovanti.com';
+		//clave = 'vanti1';
+		usuario = 'eventosvanti@kapulusinternational.com';
+		clave = 'vanti123';
 	}
 	
 	TRANSPORT = {};
@@ -2237,7 +2239,8 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	if(req.params.idevento == 69){
-		correoEnvia = 'Evento de Fin de Año de Canales Comerciales <at_canales_comerciales@grupovanti.com>';
+		//correoEnvia = 'Evento de Fin de Año de Canales Comerciales <at_canales_comerciales@grupovanti.com>';
+		correoEnvia = 'Evento de Fin de Año de Canales Comerciales Vanti<eventosvanti@kapulusinternational.com>';
 	}
 	
     let mailOptions = {

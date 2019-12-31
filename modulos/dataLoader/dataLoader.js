@@ -285,7 +285,7 @@ async function loadAttendant(dataCSV, storage, event) {
     }
     dataCSV.map(data => {
         applicationData.insertAttendant([1, data[primaryColumnName], storage.event_id,
-            false, false, false, 0, '', '', storage.storage_id], (res, err) => {
+            false, true, false, 0, '', '', storage.storage_id], (res, err) => {
             });
     });
     return "sucess";

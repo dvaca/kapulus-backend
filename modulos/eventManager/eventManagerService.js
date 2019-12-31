@@ -109,7 +109,9 @@ async function deleteDefaultZone(params){
 app.delete('/v2/events/:idevento', async(req, res, next) => {
     var response = {};
     await deleteDefaultZone(req.params);
-    applicationData.deleteEvent(req.params, (events, error) => {
+    var params = [];
+    params.push(req.params.idevento);
+    applicationData.deleteEvent(params, (events, error) => {
         console.log(events);
         if (error) {
             return next(error);

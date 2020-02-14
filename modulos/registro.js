@@ -1020,9 +1020,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'eventosvanti@kapulusinternational.com';
 		clave = 'vanti123';
 	}
+	if(req.params.idevento == 70){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
-	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64 || req.params.idevento == 66 || req.params.idevento == 67 || req.params.idevento == 68 || req.params.idevento == 69){
+	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64 || req.params.idevento == 66 || req.params.idevento == 67 || req.params.idevento == 68 || req.params.idevento == 69 || req.params.idevento == 70){
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'mail.congresodeetica.com.co',
@@ -2090,6 +2094,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 70){
+      adjuntos = [
+        {
+          path:"./resources/invitacionInvestigar.jpg",  
+          filename:"invitacionInvestigar.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -2241,6 +2254,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	if(req.params.idevento == 69){
 		//correoEnvia = 'Evento de Fin de Año de Canales Comerciales <at_canales_comerciales@grupovanti.com>';
 		correoEnvia = 'Evento de Fin de Año de Canales Comerciales Vanti<eventosvanti@kapulusinternational.com>';
+	}
+	if(req.params.idevento == 70){
+		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	
     let mailOptions = {

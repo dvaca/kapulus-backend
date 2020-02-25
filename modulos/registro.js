@@ -1024,9 +1024,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 72){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
-	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64 || req.params.idevento == 66 || req.params.idevento == 67 || req.params.idevento == 68 || req.params.idevento == 69 || req.params.idevento == 70){
+	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64 || req.params.idevento == 66 || req.params.idevento == 67 || req.params.idevento == 68 || req.params.idevento == 69 || req.params.idevento == 70 || req.params.idevento == 72){
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'mail.congresodeetica.com.co',
@@ -1903,6 +1907,26 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 72){
+      adjuntos = [
+        {
+          path:"./resources/QRKhiron1.jpg",  
+          filename:"QRKhiron1.png",  
+          cid: "confirmacionheader"
+        },
+		{
+          path:"./resources/QRKhiron2.jpg",  
+          filename:"QRKhiron2.png",  
+          cid: "confirmacionfooter"
+        },
+        {
+          filename: "QR.png",
+          content: imagenQR,
+          cid: "qr",
+          encoding: 'base64'
+        }
+      ]
+	  }
     }else{ //INVITACION
 	  if(req.params.idevento == 14){
       adjuntos = [
@@ -2256,6 +2280,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Evento de Fin de Año de Canales Comerciales Vanti<eventosvanti@kapulusinternational.com>';
 	}
 	if(req.params.idevento == 70){
+		correoEnvia = 'Foros Semana <foros@semana.com>';
+	}
+	if(req.params.idevento == 72){
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	

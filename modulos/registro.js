@@ -1032,9 +1032,13 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		usuario = 'foros@semana.com';
 		clave = 'convocatoriapacaweci';
 	}
+	if(req.params.idevento == 74){
+		usuario = 'foros@semana.com';
+		clave = 'convocatoriapacaweci';
+	}
 	
 	TRANSPORT = {};
-	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64 || req.params.idevento == 66 || req.params.idevento == 67 || req.params.idevento == 68 || req.params.idevento == 69 || req.params.idevento == 70 || req.params.idevento == 72 || req.params.idevento == 73){
+	if(req.params.idevento == 33 || req.params.idevento == 56 || req.params.idevento == 60 || req.params.idevento == 62 || req.params.idevento == 63|| req.params.idevento == 64 || req.params.idevento == 66 || req.params.idevento == 67 || req.params.idevento == 68 || req.params.idevento == 69 || req.params.idevento == 70 || req.params.idevento == 72 || req.params.idevento == 73 || req.params.idevento == 74){
 		TRANSPORT = {
 		  service: 'Gmail', 
 		  //host: 'mail.congresodeetica.com.co',
@@ -2140,6 +2144,15 @@ app.get('/asistente/:idevento', (req, res, next) => {
         }
       ]
 	  }
+	  if(req.params.idevento == 74){
+      adjuntos = [
+        {
+          path:"./resources/invitacionAmarilo.jpg",  
+          filename:"invitacionAmarilo.jpg",  
+          cid: "invitacion"
+        }
+      ]
+	  }
     }
 	
 	let correoEnvia;
@@ -2300,6 +2313,9 @@ app.get('/asistente/:idevento', (req, res, next) => {
 	}
 	if(req.params.idevento == 73){
 		correoEnvia = 'Foros Semana <foros@semana.com>';
+	}
+	if(req.params.idevento == 74){
+		correoEnvia = 'Eventos Semana <eventos@semana.com>';
 	}
 	
     let mailOptions = {

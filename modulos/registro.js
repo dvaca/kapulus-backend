@@ -2312,7 +2312,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
 		correoEnvia = 'Foros Semana <foros@semana.com>';
 	}
 	if(req.params.idevento == 73){
-		correoEnvia = 'Foros Semana <foros@semana.com>';
+		correoEnvia = 'Eventos Semana <eventos@semana.com>';
 	}
 	if(req.params.idevento == 74){
 		correoEnvia = 'Eventos Semana <eventos@semana.com>';

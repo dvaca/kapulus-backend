@@ -694,7 +694,7 @@ app.get('/asistente/:idevento', (req, res, next) => {
           COUNT(DISTINCT a.escarapelas) escarapelas,
           COUNT(DISTINCT a.certificados) certificados
       FROM 
-      (SELECT a.fecha, 
+      (SELECT a.fecha AT TIME ZONE 'EST' AS fecha, 
       CASE idoperacion WHEN 3 THEN a.idasistente ELSE null END AS registrados, 
       CASE WHEN idoperacion = 4 OR idoperacion = 5 THEN a.idasistente ELSE null END AS escarapelas,
       CASE idoperacion WHEN 6 THEN a.idasistente ELSE null END AS certificados

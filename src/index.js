@@ -43,7 +43,7 @@ app.listen(PORT, function () {
   //PING
   app.get('/', (req, res, next) => {
     //log('Start', 'PING', 'Hello world!');
-    db.query('SELECT $1::text as message', ['Hello world!'], (err, result) => {
+    db.query('SELECT $1::text as message', ['Hello world 1!'], (err, result) => {
       if (err) {
         return next(err);
       }

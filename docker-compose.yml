@@ -10,3 +10,6 @@ services:
       - '/app/node_modules'
     ports:
       - '5000:4000'
+networks:
+      default:        
+          name: kapulus-network

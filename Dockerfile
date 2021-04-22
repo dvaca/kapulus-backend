@@ -1,13 +1,10 @@
 FROM node:10
 # Create app directory into the container
-WORKDIR /app
-RUN ls
+WORKDIR /usr/src/app/kapulus-backend
 # Install dependencies
 COPY package*.json ./
 RUN npm install
-# Copy app code
-COPY . .
 # Expose app port
-#EXPOSE 4000
+EXPOSE 5000
 #Execute the app
-CMD [ "node", "src/index.js" ]
+CMD [ "npm", "start"]

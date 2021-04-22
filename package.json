@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js localhost 5000"
   },
   "version": "1.0.0",
   "main": "server.js",

@@ -8,7 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const Dymo = require('dymojs');//,
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
        //dymo = new Dymo();
 
 var corsOptions = {
@@ -19,7 +19,7 @@ var corsOptions = {
   //origin: 'http://192.168.0.6:4200', // LOCAL
   //origin: 'http://192.168.0.102:4200', // ADRIAN
   //origin: 'https://192.168.0.4:4200', // LOCAL SSL
-  origin: 'https://kapulus.herokuapp.com', // INTERNET
+  origin: 'https://kapulus-backend:5000', // INTERNET
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
 };
 

@@ -3,14 +3,14 @@ services:
   backend:
     container_name: kapulus-backend
     build:
-      context: .
+      context: ../kapulus-backend
       dockerfile: ./Dockerfile
     restart: always
     volumes:
-      - '.:/app'
-      - '/app/node_modules'
+      - ../kapulus-backend:/usr/src/app/kapulus-backend
+      - /usr/src/app/kapulus-backend/node_modules
     ports:
-      - '5000:4000'
+      - '5000:5000'
 networks:
       default:        
           name: kapulus-network

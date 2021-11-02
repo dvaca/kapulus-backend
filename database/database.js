@@ -19,7 +19,8 @@ var config = {
   user: 'wzthfhkxjnbqxv',
   database: 'dfu1a982rcvbsi',
   password: '1dae3a7664678a13a1ccda3a93191cfd1ead93d2cbc99034efd65433e8962c8c',
-  port: 5432
+  port: 5432,
+  ssl: true
   //max: 10, // max number of connection can be open to database
   //idleTimeoutMillis: 30000 // how long a client is allowed to remain idle before being closed
 };

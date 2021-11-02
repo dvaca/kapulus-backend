@@ -11,6 +11,25 @@ var index = require('../src/index');
 var app = index.app;
 var db = index.db;
 
+ //PING BORRAR
+  app.get('/abc/', (req, res, next) => {
+    log('Start', 'PING abc', 'Hello world!');
+    res.send("{'nada'}");
+  });
+
+ //PING DOS
+  app.get('/def/', (req, res, next) => {
+    log('Start', 'PING def', 'Hello world!');
+    db.query('SELECT $1::text as message', ['Hello world 1!'], (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      var fecha = new Date().toLocaleString();
+      log('End', 'PING def', 'Hello world!');
+      res.send(result.rows[0]);
+    })
+  });
+
 
   //PING
   app.get('/', (req, res, next) => {

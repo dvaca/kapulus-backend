@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var db = require('../database/database');
+var db = require('../database/databaser');
 var fs = require('fs')
 var nodemailer = require('nodemailer');
 

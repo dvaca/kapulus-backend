@@ -38,7 +38,8 @@ var labelXml;
   });
  
 app.listen(PORT, function () {
-    console.log('Server is running.. on Port ' + PORT);
+    console.log('Server is running... on Port ' + PORT);
+    console.log(process.env.PORT)
 });
 
   //PING

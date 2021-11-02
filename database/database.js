@@ -10,16 +10,16 @@ var config = {
   //database: 'd7tjn0c1k927pq', 
   //password: '32069e24b8717feceb9544868a8615ce18bb93cafab653fd910da71e034236fc', 
   //CONFIGURACION BD PRODUCCION
-   //host: 'ec2-107-20-183-142.compute-1.amazonaws.com',
-   //user: 'wzthfhkxjnbqxv',
-   //database: 'dfu1a982rcvbsi',
-   //password: '1dae3a7664678a13a1ccda3a93191cfd1ead93d2cbc99034efd65433e8962c8c',
+   host: 'ec2-107-20-183-142.compute-1.amazonaws.com',
+   user: 'wzthfhkxjnbqxv',
+   database: 'dfu1a982rcvbsi',
+   password: '1dae3a7664678a13a1ccda3a93191cfd1ead93d2cbc99034efd65433e8962c8c',
 
   //BASE DE DATOS DE DESARROLLO
-  host: 'kapulus_db',
-  user: 'kapulus',
-  database: 'kapulus',
-  password: 'MrPotato*',
+  //host: 'kapulus_db',
+  //user: 'kapulus',
+  //database: 'kapulus',
+  //password: 'MrPotato*',
   //port: 5432,
   //max: 10, // max number of connection can be open to database
   //idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed

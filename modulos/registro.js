@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 
 var index = require('../src/index');
 var app = index.app;
-var db = index.db;
+var dbb = index.db;
 
  //PING BORRAR
   app.get('/abc/', (req, res, next) => {

@@ -21,6 +21,9 @@
   "devDependencies": {
     "nodemon": "^1.19.2"
   },
+  "engines": {
+      "node": "12.20.1"
+   },
   "license": "ISC",
   "description": ""
 }

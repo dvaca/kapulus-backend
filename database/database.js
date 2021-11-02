@@ -20,9 +20,9 @@ var config = {
   //user: 'kapulus',
   //database: 'kapulus',
   //password: 'MrPotato*',
-  //port: 5432,
-  //max: 10, // max number of connection can be open to database
-  //idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+  port: 5432,
+  max: 10, // max number of connection can be open to database
+  idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 };
 
 const pool = new Pool(config);

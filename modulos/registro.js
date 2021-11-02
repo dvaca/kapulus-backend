@@ -7,9 +7,33 @@ var nodemailer = require('nodemailer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-var index = require('../src/index');
-var app = index.app;
-var dbb = index.db;
+//var index = require('../src/index');
+//var app = index.app;
+//var dbb = index.db;
+
+const PORT = process.env.PORT || 4000;
+       //dymo = new Dymo();
+
+var corsOptions = {
+       origin: 'https://kapulus.herokuapp.com', // PROD
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+};
+
+app.use(bodyParser.json()); // for parsing application/json
+  app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+  app.use(cors(corsOptions));
+
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+ 
+app.listen(PORT, function () {
+    console.log('Server is running... on Port ' + PORT);
+    console.log(process.env.PORT)
+});
 
  //PING BORRAR
   app.get('/abc/', (req, res, next) => {

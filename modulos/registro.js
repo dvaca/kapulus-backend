@@ -41,6 +41,11 @@ app.listen(PORT, function () {
     res.send("{'nada'}");
   });
 
+  app.get('/db/', (req, res, next) => {
+    log('Start', 'PING db', 'Hello world!');
+    res.send(db);
+  });
+
  //PING DOS
   app.get('/def/', (req, res, next) => {
     log('Start', 'PING def', 'Hello world!');

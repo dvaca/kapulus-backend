@@ -27,10 +27,10 @@ var config = {
   //password: '46db7112b54aa894b7bedbf68dfd505b079efa3e6f9b74690a34766dc2c23488',
   //port: 5432,
   //ssl: true
-  host: 'ec2-107-22-238-112.compute-1.amazonaws.com',
-  user: 'ihoseegqfvxpdl',
-  database: 'd5lpmphmlhcpau',
-  password: '19edd8f6a586939862c972849984ccdca9132b802d0619f87a48eba321f8d51d',
+  host: 'c235lq2eimh9hu.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+  user: 'uevq6jm9iidlll',
+  database: 'd7ii2dt44v242l',
+  password: 'peaefca039b2c806953b330c455e8580eafbaffe156fc377a3280aa1f8ffbdaca',
   port: 5432,
   ssl: true
   //max: 10, // max number of connection can be open to database

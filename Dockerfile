@@ -2,7 +2,7 @@ FROM node:10
 # Create app directory into the container
 WORKDIR /usr/src/app/kapulus-backend
 # Install dependencies
-COPY package*.json ./
+COPY *.* ./
 RUN npm install
 # Expose app port
 EXPOSE 5000

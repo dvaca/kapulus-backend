@@ -1,5 +1,7 @@
 build:
   docker:
     web: Dockerfile
+  config:
+    PORT: 5000
 run:
   web: node server.js

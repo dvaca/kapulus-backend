@@ -27,10 +27,10 @@ var config = {
   //password: '46db7112b54aa894b7bedbf68dfd505b079efa3e6f9b74690a34766dc2c23488',
   //port: 5432,
   //ssl: true
-  host: 'c235lq2eimh9hu.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
-  user: 'uevq6jm9iidlll',
-  database: 'd7ii2dt44v242l',
-  password: 'peaefca039b2c806953b330c455e8580eafbaffe156fc377a3280aa1f8ffbdaca',
+  host: 'ce5cavigtak40n.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+  user: 'u1rbfu02v2habs',
+  database: 'dcakljc4eg219n',
+  password: 'p5d606d38fa3c9e668cf60feb95e33c803d6a8ef13f954aaa59976a6aac299d12',
   port: 5432,
   ssl: true
   //max: 10, // max number of connection can be open to database

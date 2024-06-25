@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 //var app = index.app;
 //var dbb = index.db;
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
        //dymo = new Dymo();
 
 var corsOptions = {
@@ -32,7 +32,6 @@ app.use(bodyParser.json()); // for parsing application/json
  
 app.listen(PORT, function () {
     console.log('Server is running... on Port ' + PORT);
-    console.log(process.env.PORT)
 });
 
  //PING BORRAR
